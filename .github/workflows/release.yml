@@ -32,7 +32,11 @@ jobs:
       - name: Stamp version into Info.plist
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          BUILD=$(git rev-list --count HEAD)
+          # +100 offset so v0.3.x build numbers stay above the old Ditto-era
+          # v0.2.x build numbers (~60-70). Sparkle compares CFBundleVersion
+          # numerically; without this, existing v0.2.9 installs would see
+          # a smaller build and refuse to upgrade.
+          BUILD=$(( $(git rev-list --count HEAD) + 100 ))
           echo "Version: $VERSION  Build: $BUILD"
           /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" Resources/Info.plist
           /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD" Resources/Info.plist
