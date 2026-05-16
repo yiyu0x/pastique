@@ -15,6 +15,10 @@ import SwiftUI
 @MainActor
 final class HoverPreviewPanel: NSPanel {
     static let contentSize = NSSize(width: 320, height: 320)
+    /// Color clips don't benefit from the full square — the row already
+    /// shows a swatch, and the panel mostly exists to surface HEX/RGB/HSL.
+    /// Use a shorter, narrower frame so the preview stops dominating.
+    static let colorSize = NSSize(width: 260, height: 180)
 
     private let imageWrapper: NSView
     private let imageView: NSImageView
@@ -122,11 +126,20 @@ final class HoverPreviewPanel: NSPanel {
     private func showImageMode() {
         imageWrapper.isHidden = false
         colorHosting.isHidden = true
+        resizePanel(to: Self.contentSize)
     }
 
     private func showColorMode() {
         imageWrapper.isHidden = true
         colorHosting.isHidden = false
+        resizePanel(to: Self.colorSize)
+    }
+
+    private func resizePanel(to size: NSSize) {
+        guard frame.size != size else { return }
+        var f = frame
+        f.size = size
+        setFrame(f, display: false, animate: false)
     }
 
     // MARK: - Content resolution
@@ -180,7 +193,7 @@ final class HoverPreviewPanel: NSPanel {
     // MARK: - Positioning
 
     private func reposition(anchor: NSRect) {
-        let size = Self.contentSize
+        let size = frame.size
         let gap: CGFloat = 8
         let screen = NSScreen.screens.first { $0.frame.intersects(anchor) } ?? NSScreen.main
         guard let vis = screen?.visibleFrame else { return }
@@ -207,13 +220,13 @@ private struct ColorPreviewCard: View {
         VStack(spacing: 0) {
             Color(nsColor: parsed.color)
                 .frame(maxWidth: .infinity)
-                .frame(height: 200)
+                .frame(height: 64)
             VStack(alignment: .leading, spacing: 6) {
                 row(label: "HEX", value: parsed.hex)
                 row(label: "RGB", value: parsed.rgb)
                 row(label: "HSL", value: parsed.hsl)
             }
-            .padding(14)
+            .padding(12)
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(Color(nsColor: .windowBackgroundColor))
         }

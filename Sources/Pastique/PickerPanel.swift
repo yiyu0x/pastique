@@ -86,8 +86,18 @@ final class PickerPanel: NSPanel {
             object: self
         )
 
+        // ViewModel fires this synchronously after items/selectedIndex are
+        // committed — more reliable than `@Published` willSet, which would
+        // require an async hop to read fresh state and still misses the
+        // case where the index resets to 0 → 0 across a filter change.
+        viewModel.onSelectionChanged = { [weak self] in self?.scheduleHoverPreview() }
+
+        // Mouse-hover row selection bypasses the ViewModel's nav methods,
+        // so we still need a Combine fallback for `selectedIndex` changes
+        // driven directly from SwiftUI.
         selectionSub = viewModel.$selectedIndex
             .removeDuplicates()
+            .dropFirst()
             .sink { [weak self] _ in self?.scheduleHoverPreview() }
 
         keyMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
@@ -175,9 +185,33 @@ final class PickerPanel: NSPanel {
 
     private func scheduleHoverPreview() {
         hoverDebounce?.cancel()
-        let work = DispatchWorkItem { [weak self] in self?.presentHoverPreview() }
-        hoverDebounce = work
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: work)
+        // Hide synchronously if the current selection has nothing to preview
+        // (or no selection at all). Debouncing the hide leaves a stale image
+        // or color swatch visible while the user arrow-keys between filters.
+        //
+        // We deliberately don't check `isVisible` here: showAtCursor() calls
+        // `reload()` BEFORE `makeKeyAndOrderFront`, so the first scheduling
+        // tick happens while the panel is still hidden. `presentHoverPreview`
+        // re-checks `isVisible` after the 250ms debounce, by which time the
+        // panel is on screen.
+        let items = viewModel.items
+        let idx = viewModel.selectedIndex
+        guard items.indices.contains(idx) else {
+            hoverPreview.hide()
+            return
+        }
+        let item = items[idx]
+        switch item.card {
+        case .image, .fileURL, .color:
+            let work = DispatchWorkItem { [weak self] in self?.presentHoverPreview() }
+            hoverDebounce = work
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: work)
+        case .text, .url, .phone, .email, .creditCard, .ssn, .address, .command:
+            // Plain text / URL / personal cards have nothing extra to
+            // show — the row already renders the full value (or masked
+            // last-4 for CC/SSN). A hover panel would just duplicate.
+            hoverPreview.hide()
+        }
     }
 
     private func presentHoverPreview() {
@@ -190,9 +224,6 @@ final class PickerPanel: NSPanel {
         case .image, .fileURL, .color:
             hoverPreview.show(for: item, store: store, anchor: frame)
         case .text, .url, .phone, .email, .creditCard, .ssn, .address, .command:
-            // Plain text / URL / personal cards have nothing extra to
-            // show — the row already renders the full value (or masked
-            // last-4 for CC/SSN). A hover panel would just duplicate.
             hoverPreview.hide()
         }
     }

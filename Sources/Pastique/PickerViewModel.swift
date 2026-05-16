@@ -86,6 +86,12 @@ final class PickerViewModel: ObservableObject {
 
     var onPick: (ClipItem) -> Void = { _ in }
     var onCancel: () -> Void = {}
+    /// Fired synchronously after the filter/sort recomputes `items` and
+    /// resets `selectedIndex`. The Combine `@Published` path emits in
+    /// `willSet`, which means subscribers see stale property reads until
+    /// the next runloop hop — too racy for the hover preview to refresh
+    /// reliably when the user cycles chips with ←/→.
+    var onSelectionChanged: () -> Void = {}
 
     init(store: ClipStore) {
         self.store = store
@@ -206,6 +212,7 @@ final class PickerViewModel: ObservableObject {
         }
         selectedIndex = 0
         scrollTick &+= 1
+        onSelectionChanged()
     }
 
     /// Substring match. Text → body. Files → decoded path (so users can search
@@ -233,12 +240,14 @@ final class PickerViewModel: ObservableObject {
         guard !items.isEmpty else { return }
         selectedIndex = (selectedIndex - 1 + items.count) % items.count
         scrollTick &+= 1
+        onSelectionChanged()
     }
 
     func moveDown() {
         guard !items.isEmpty else { return }
         selectedIndex = (selectedIndex + 1) % items.count
         scrollTick &+= 1
+        onSelectionChanged()
     }
 
     func pickCurrent() {
