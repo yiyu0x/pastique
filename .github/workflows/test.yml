@@ -1,0 +1,28 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show Swift version
+        run: swift --version
+
+      - name: Run tests
+        run: swift test
+
+      - name: Build .app (smoke test)
+        run: ./build.sh
+
+      - name: Verify .app bundle structure
+        run: |
+          test -f Pastique.app/Contents/MacOS/Pastique
+          test -f Pastique.app/Contents/Info.plist
+          codesign --verify --verbose Pastique.app

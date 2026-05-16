@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.kylechang.pastique</string>
+    <key>CFBundleName</key>
+    <string>Pastique</string>
+    <key>CFBundleDisplayName</key>
+    <string>Pastique</string>
+    <key>CFBundleExecutable</key>
+    <string>Pastique</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundleIconName</key>
+    <string>AppIcon</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSSupportsAutomaticTermination</key>
+    <false/>
+    <key>NSSupportsSuddenTermination</key>
+    <false/>
+
+    <!-- Sparkle auto-update. SUPublicEDKey is set by tools/setup-sparkle.sh.
+         appcast.xml is served straight from the gh-pages branch via
+         raw.githubusercontent.com — no GitHub Pages or custom domain
+         needed. Content-Type is text/plain but Sparkle 2 parses by content. -->
+    <key>SUFeedURL</key>
+    <string>https://raw.githubusercontent.com/yiyu0x/pastique/gh-pages/appcast.xml</string>
+    <key>SUPublicEDKey</key>
+    <string>BWJ63F5NI0ioxHIMQAfSt9zYzM5ryQXFyxN2WHVQq6c=</string>
+    <key>SUEnableAutomaticChecks</key>
+    <true/>
+    <key>SUScheduledCheckInterval</key>
+    <integer>86400</integer>
+</dict>
+</plist>

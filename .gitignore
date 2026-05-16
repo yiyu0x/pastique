@@ -1,0 +1,35 @@
+# Swift / SPM
+.build/
+.swiftpm/
+*.xcodeproj/
+*.xcworkspace/
+
+# Build artifacts
+Pastique.app/
+*.dSYM/
+*.zip
+/build/
+
+# Intermediate icon assets (regen from tools/make-icon.swift). The
+# committed AppIcon.icns under Resources/ is what build.sh bundles.
+Resources/AppIcon.iconset/
+
+# Xcode user data
+*.xcuserdatad/
+xcuserdata/
+DerivedData/
+
+# Editor caches
+.vscode/
+.idea/
+
+# Claude Code & gstack local state
+.claude/
+CLAUDE.md
+.gstack/
+
+# macOS
+.DS_Store
+
+# Notes: Package.resolved IS committed for executable packages so builds
+# stay reproducible. Don't add it here.

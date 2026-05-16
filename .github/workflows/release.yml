@@ -1,0 +1,184 @@
+name: Release
+
+# Fires when you push a tag like v0.1.0
+# Creates a GitHub Release with Pastique.app.zip attached, signs it for
+# Sparkle, and updates the appcast on the gh-pages branch.
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write   # release upload + gh-pages branch push
+
+jobs:
+  release:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Need full history so `git rev-list --count` gives a stable
+          # monotonic CFBundleVersion for Sparkle's version comparison.
+          fetch-depth: 0
+
+      - name: Show toolchain
+        run: |
+          swift --version
+          xcodebuild -version
+
+      - name: Run tests
+        run: swift test
+
+      - name: Stamp version into Info.plist
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          BUILD=$(git rev-list --count HEAD)
+          echo "Version: $VERSION  Build: $BUILD"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $VERSION" Resources/Info.plist
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $BUILD" Resources/Info.plist
+          echo "PASTIQUE_VERSION=$VERSION" >> $GITHUB_ENV
+          echo "PASTIQUE_BUILD=$BUILD" >> $GITHUB_ENV
+
+      - name: Build universal Pastique.app
+        run: UNIVERSAL=1 ./build.sh
+
+      - name: Verify universal binary
+        run: |
+          lipo -archs Pastique.app/Contents/MacOS/Pastique
+          codesign --verify --verbose Pastique.app
+
+      - name: Zip
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent Pastique.app "Pastique-${GITHUB_REF_NAME}.zip"
+          shasum -a 256 "Pastique-${GITHUB_REF_NAME}.zip"
+
+      - name: Sign update for Sparkle
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          if [ -z "$SPARKLE_PRIVATE_KEY" ]; then
+            echo "SPARKLE_PRIVATE_KEY secret is empty — skipping signing"
+            echo "SPARKLE_SIGNED=false" >> $GITHUB_ENV
+            exit 0
+          fi
+          echo "$SPARKLE_PRIVATE_KEY" > sparkle_private.key
+          SIGN=".build/artifacts/sparkle/Sparkle/bin/sign_update"
+          if [ ! -x "$SIGN" ]; then
+            SIGN=".build/checkouts/Sparkle/bin/sign_update"
+          fi
+          if [ ! -x "$SIGN" ]; then
+            echo "sign_update not found, resolving packages..."
+            swift package resolve
+            SIGN=".build/artifacts/sparkle/Sparkle/bin/sign_update"
+          fi
+          OUT=$("$SIGN" -f sparkle_private.key "Pastique-${GITHUB_REF_NAME}.zip")
+          # sign_update prints something like: sparkle:edSignature="..." length="..."
+          echo "$OUT"
+          ED_SIG=$(echo "$OUT" | sed -n 's/.*sparkle:edSignature="\([^"]*\)".*/\1/p')
+          LENGTH=$(echo "$OUT" | sed -n 's/.*length="\([^"]*\)".*/\1/p')
+          if [ -z "$LENGTH" ]; then
+            LENGTH=$(stat -f %z "Pastique-${GITHUB_REF_NAME}.zip")
+          fi
+          echo "ED_SIG=$ED_SIG" >> $GITHUB_ENV
+          echo "ZIP_LENGTH=$LENGTH" >> $GITHUB_ENV
+          echo "SPARKLE_SIGNED=true" >> $GITHUB_ENV
+          rm sparkle_private.key
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            Pastique-*.zip
+          generate_release_notes: true
+          body: |
+            ## Install
+
+            1. Download `Pastique-${{ github.ref_name }}.zip` below
+            2. Unzip and move `Pastique.app` to `/Applications`
+            3. Open `Pastique` from `/Applications`. macOS will show **"Apple could not verify Pastique."** (Pastique is ad-hoc signed, not notarized.) To allow it:
+               - Open **System Settings → Privacy & Security**
+               - Scroll to the **Security** section
+               - Click **Open Anyway** next to the Pastique notice
+               - Confirm in the dialog
+               - One-time per install
+            4. Press `⌘⇧V` to open clipboard history.
+
+            Built from commit `${{ github.sha }}` — universal binary (arm64 + x86_64), macOS 13+. Future versions auto-update via Sparkle.
+
+      - name: Update appcast on gh-pages
+        if: ${{ env.SPARKLE_SIGNED == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PUB_DATE=$(date -u +"%a, %d %b %Y %H:%M:%S +0000")
+          DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}/Pastique-${GITHUB_REF_NAME}.zip"
+
+          # Clone gh-pages (create orphan if it doesn't exist yet)
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" appcast-repo
+          cd appcast-repo
+          git config user.email "github-actions@github.com"
+          git config user.name "github-actions"
+
+          if git ls-remote --exit-code origin gh-pages >/dev/null 2>&1; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf . 2>/dev/null || true
+          fi
+
+          if [ ! -f appcast.xml ]; then
+            cat > appcast.xml <<HEADER
+          <?xml version="1.0" encoding="utf-8"?>
+          <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+            <channel>
+              <title>Pastique</title>
+              <link>https://github.com/${GITHUB_REPOSITORY}</link>
+              <description>Lightweight macOS clipboard history tool</description>
+              <language>en</language>
+            </channel>
+          </rss>
+          HEADER
+          fi
+
+          cat > new-item.xml <<ITEM
+              <item>
+                <title>Pastique ${PASTIQUE_VERSION}</title>
+                <link>https://github.com/${GITHUB_REPOSITORY}/releases/tag/${GITHUB_REF_NAME}</link>
+                <sparkle:version>${PASTIQUE_BUILD}</sparkle:version>
+                <sparkle:shortVersionString>${PASTIQUE_VERSION}</sparkle:shortVersionString>
+                <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+                <pubDate>${PUB_DATE}</pubDate>
+                <enclosure
+                  url="${DOWNLOAD_URL}"
+                  length="${ZIP_LENGTH}"
+                  type="application/octet-stream"
+                  sparkle:edSignature="${ED_SIG}"/>
+              </item>
+          ITEM
+
+          # Inject the new <item> just before </channel> so newest is on top
+          awk -v ITEMFILE="new-item.xml" '
+            /<\/channel>/ && !injected {
+              while ((getline line < ITEMFILE) > 0) print line
+              close(ITEMFILE)
+              injected = 1
+            }
+            { print }
+          ' appcast.xml > appcast.new.xml
+          mv appcast.new.xml appcast.xml
+          rm new-item.xml
+
+          # Optional: a tiny landing page so people who hit the URL aren't lost
+          if [ ! -f index.html ]; then
+            cat > index.html <<HTML
+          <!DOCTYPE html><html><head><title>Pastique</title></head>
+          <body><h1>Pastique</h1>
+          <p>Lightweight macOS clipboard history tool.</p>
+          <p><a href="https://github.com/${GITHUB_REPOSITORY}">Source</a> · <a href="https://github.com/${GITHUB_REPOSITORY}/releases">Releases</a> · <a href="appcast.xml">appcast.xml</a></p>
+          </body></html>
+          HTML
+          fi
+
+          git add appcast.xml index.html
+          git commit -m "Update appcast for ${GITHUB_REF_NAME}" || echo "no changes"
+          git push origin gh-pages

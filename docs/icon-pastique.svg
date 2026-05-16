@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="glassBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFEDDF"/>
+      <stop offset="55%" stop-color="#F4D2C5"/>
+      <stop offset="100%" stop-color="#D9A99B"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.65"/>
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="cardTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFB100"/>
+      <stop offset="50%" stop-color="#E4587C"/>
+      <stop offset="100%" stop-color="#6B3A8F"/>
+    </linearGradient>
+    <linearGradient id="cardMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFC340"/>
+      <stop offset="50%" stop-color="#EC7B97"/>
+      <stop offset="100%" stop-color="#8A5DA6"/>
+    </linearGradient>
+    <linearGradient id="cardBack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD786"/>
+      <stop offset="50%" stop-color="#F2A1B6"/>
+      <stop offset="100%" stop-color="#AE8AC0"/>
+    </linearGradient>
+    <radialGradient id="discCool" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#B6CFE2" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#B6CFE2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="discWarm" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D1A88E" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#D1A88E" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <clipPath id="squircle">
+      <rect x="0" y="0" width="1024" height="1024" rx="229" ry="229"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#squircle)">
+    <rect width="1024" height="1024" fill="url(#glassBase)"/>
+    <circle cx="300" cy="260" r="320" fill="url(#discCool)"/>
+    <circle cx="780" cy="820" r="300" fill="url(#discWarm)"/>
+    <rect width="1024" height="560" fill="url(#gloss)"/>
+    <g filter="url(#softShadow)" opacity="0.28" transform="translate(14, 22)">
+      <rect x="280" y="160" width="500" height="660" rx="56" fill="#000"/>
+    </g>
+    <g transform="rotate(-8 530 510)"><rect x="280" y="160" width="500" height="660" rx="56" fill="url(#cardBack)"/></g>
+    <g transform="rotate(4 512 512)"><rect x="240" y="190" width="520" height="660" rx="56" fill="url(#cardMid)"/></g>
+    <g transform="rotate(-2 512 512)">
+      <rect x="212" y="220" width="600" height="660" rx="60" fill="url(#cardTop)"/>
+      <rect x="212" y="220" width="600" height="4" rx="2" fill="#FFFFFF" opacity="0.55"/>
+      <rect x="270" y="320" width="380" height="38" rx="19" fill="#FFFFFF" opacity="0.95"/>
+      <rect x="270" y="400" width="460" height="38" rx="19" fill="#FFFFFF" opacity="0.82"/>
+      <rect x="270" y="480" width="310" height="38" rx="19" fill="#FFFFFF" opacity="0.70"/>
+      <rect x="270" y="560" width="410" height="38" rx="19" fill="#FFFFFF" opacity="0.55"/>
+      <rect x="270" y="640" width="250" height="38" rx="19" fill="#FFFFFF" opacity="0.38"/>
+    </g>
+  </g>
+  <rect x="2" y="2" width="1020" height="1020" rx="227" ry="227" fill="none" stroke="#000" stroke-opacity="0.06" stroke-width="2"/>
+</svg>
