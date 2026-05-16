@@ -8,8 +8,8 @@
 
 Press `⌘⇧V`. See everything you've copied. That's it.
 
-[![Release](https://img.shields.io/github/v/release/yiyu0x/pastique?display_name=tag&sort=semver)](../../releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/yiyu0x/pastique/total?color=brightgreen)](../../releases)
+[![Release](https://img.shields.io/github/v/release/yiyu0x/pastique?display_name=tag&sort=semver&v=1)](../../releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/yiyu0x/pastique/total?color=brightgreen&v=1)](../../releases)
 [![License](https://img.shields.io/github/license/yiyu0x/pastique)](LICENSE)
 
 </div>
