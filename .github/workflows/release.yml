@@ -55,6 +55,9 @@ jobs:
         run: |
           ditto -c -k --sequesterRsrc --keepParent Pastique.app "Pastique-${GITHUB_REF_NAME}.zip"
           shasum -a 256 "Pastique-${GITHUB_REF_NAME}.zip"
+          # Stable alias so the landing page can always link to
+          # releases/latest/download/Pastique.zip without knowing the version.
+          cp "Pastique-${GITHUB_REF_NAME}.zip" "Pastique.zip"
 
       - name: Sign update for Sparkle
         env:
@@ -143,6 +146,7 @@ jobs:
         with:
           files: |
             Pastique-*.zip
+            Pastique.zip
           body_path: release-body.md
 
       - name: Render release notes for Sparkle dialog
