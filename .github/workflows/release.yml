@@ -109,6 +109,32 @@ jobs:
 
             Built from commit `${{ github.sha }}` — universal binary (arm64 + x86_64), macOS 13+. Future versions auto-update via Sparkle.
 
+      - name: Render release notes for Sparkle dialog
+        if: ${{ env.SPARKLE_SIGNED == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Sparkle's update dialog has a WKWebView for release notes; if
+          # the appcast <item> has no <description>, that area is blank and
+          # the dialog looks unfinished. Use GitHub's auto-generated notes
+          # (the "What's Changed" list) — that's content actually relevant
+          # to a user already running the previous version, without the
+          # install boilerplate baked into the Release page body. Render
+          # Markdown → HTML via GitHub's /markdown endpoint so we don't
+          # need pandoc on the runner.
+          MD=$(gh api repos/${GITHUB_REPOSITORY}/releases/generate-notes \
+                  -f tag_name=${GITHUB_REF_NAME} \
+                  --jq .body)
+          if [ -z "$MD" ]; then
+            MD="Pastique ${PASTIQUE_VERSION}"
+          fi
+          jq -n --arg t "$MD" '{text:$t, mode:"gfm"}' \
+            | gh api -X POST /markdown --input - \
+            > release-notes.html
+          echo "--- rendered release notes ---"
+          head -c 400 release-notes.html
+          echo
+
       - name: Update appcast on gh-pages
         if: ${{ env.SPARKLE_SIGNED == 'true' }}
         env:
@@ -116,6 +142,7 @@ jobs:
         run: |
           PUB_DATE=$(date -u +"%a, %d %b %Y %H:%M:%S +0000")
           DOWNLOAD_URL="https://github.com/${GITHUB_REPOSITORY}/releases/download/${GITHUB_REF_NAME}/Pastique-${GITHUB_REF_NAME}.zip"
+          RELEASE_NOTES_PATH="$GITHUB_WORKSPACE/release-notes.html"
 
           # Clone gh-pages (create orphan if it doesn't exist yet)
           git clone "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" appcast-repo
@@ -144,21 +171,45 @@ jobs:
           HEADER
           fi
 
-          cat > new-item.xml <<ITEM
-              <item>
-                <title>Pastique ${PASTIQUE_VERSION}</title>
-                <link>https://github.com/${GITHUB_REPOSITORY}/releases/tag/${GITHUB_REF_NAME}</link>
-                <sparkle:version>${PASTIQUE_BUILD}</sparkle:version>
-                <sparkle:shortVersionString>${PASTIQUE_VERSION}</sparkle:shortVersionString>
-                <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-                <pubDate>${PUB_DATE}</pubDate>
-                <enclosure
-                  url="${DOWNLOAD_URL}"
-                  length="${ZIP_LENGTH}"
-                  type="application/octet-stream"
-                  sparkle:edSignature="${ED_SIG}"/>
-              </item>
-          ITEM
+          # Use Python to assemble the new <item> so the release-notes HTML
+          # (which may contain backticks, $, etc.) stays literal — heredoc
+          # interpolation would mangle it.
+          PUB_DATE="$PUB_DATE" \
+          DOWNLOAD_URL="$DOWNLOAD_URL" \
+          RELEASE_NOTES_PATH="$RELEASE_NOTES_PATH" \
+          python3 - <<'PY' > new-item.xml
+          import os, pathlib
+          notes_path = pathlib.Path(os.environ["RELEASE_NOTES_PATH"])
+          desc = ""
+          if notes_path.exists():
+              html = notes_path.read_text().strip()
+              if html:
+                  # CDATA is the standard wrapper for HTML release notes in
+                  # Sparkle. ]]> in the body would close it early — neutralize
+                  # by splitting; harmless in normal release notes.
+                  html = html.replace("]]>", "]]]]><![CDATA[>")
+                  desc = (
+                      "      <description><![CDATA[\n"
+                      f"{html}\n"
+                      "      ]]></description>\n"
+                  )
+          print(
+              "    <item>\n"
+              f"      <title>Pastique {os.environ['PASTIQUE_VERSION']}</title>\n"
+              f"      <link>https://github.com/{os.environ['GITHUB_REPOSITORY']}/releases/tag/{os.environ['GITHUB_REF_NAME']}</link>\n"
+              f"      <sparkle:version>{os.environ['PASTIQUE_BUILD']}</sparkle:version>\n"
+              f"      <sparkle:shortVersionString>{os.environ['PASTIQUE_VERSION']}</sparkle:shortVersionString>\n"
+              "      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>\n"
+              f"      <pubDate>{os.environ['PUB_DATE']}</pubDate>\n"
+              f"{desc}"
+              "      <enclosure\n"
+              f"        url=\"{os.environ['DOWNLOAD_URL']}\"\n"
+              f"        length=\"{os.environ['ZIP_LENGTH']}\"\n"
+              "        type=\"application/octet-stream\"\n"
+              f"        sparkle:edSignature=\"{os.environ['ED_SIG']}\"/>\n"
+              "    </item>"
+          )
+          PY
 
           # Inject the new <item> just before </channel> so newest is on top
           awk -v ITEMFILE="new-item.xml" '
