@@ -154,22 +154,31 @@ struct PickerView: View {
     }
 
     private var footer: some View {
+        // ↑↓⏎ and Esc are universal picker affordances — every macOS user
+        // already knows them, so spelling them out just steals room from the
+        // hints that aren't obvious (←→ filter, ⌫ delete, type-to-search).
         HStack(spacing: 6) {
-            Text("↑↓ ⏎ copy")
-            Text("esc")
             // ←→ only acts on the filter while there's nothing to edit in
             // the search field. Showing the hint only in that mode mirrors
             // the actual key behavior — no misleading "always available" UI.
             if viewModel.query.isEmpty && viewModel.availableFilters.count > 1 {
                 Text("←→ filter")
+                    .lineLimit(1)
+                    .foregroundStyle(.tertiary)
+            }
+            if viewModel.query.isEmpty && !viewModel.items.isEmpty {
+                Text("⌫ delete")
+                    .lineLimit(1)
                     .foregroundStyle(.tertiary)
             }
             if !viewModel.searchActive {
                 Text("type to search")
+                    .lineLimit(1)
+                    .layoutPriority(-1)
                     .foregroundStyle(.tertiary)
             }
             sortBadge
-            Spacer()
+            Spacer(minLength: 0)
             settingsMenu
         }
         .font(.system(size: 10))
@@ -192,7 +201,9 @@ struct PickerView: View {
                       : "chart.bar.fill")
                     .font(.system(size: 9))
                 Text(viewModel.sortOrder == .recency ? "recent" : "frequent")
+                    .lineLimit(1)
             }
+            .fixedSize(horizontal: true, vertical: false)
             .padding(.horizontal, 5)
             .padding(.vertical, 1)
             .background(Color.secondary.opacity(0.12), in: Capsule())
@@ -699,6 +710,17 @@ private struct SearchField: NSViewRepresentable {
             case #selector(NSResponder.insertNewline(_:)),
                  #selector(NSResponder.insertLineBreak(_:)):
                 viewModel.pickCurrent(); return true
+            case #selector(NSResponder.deleteBackward(_:)),
+                 #selector(NSResponder.deleteForward(_:)):
+                // While the user is editing the query, ⌫ must keep editing
+                // the text. Only when the field is empty do we repurpose it
+                // as "delete the selected clip" — that matches what the
+                // user expects from Finder / Mail row deletion.
+                if viewModel.query.isEmpty {
+                    viewModel.deleteSelected()
+                    return true
+                }
+                return false
             case #selector(NSResponder.cancelOperation(_:)):
                 // Two-stage Esc: first press clears the filter + collapses
                 // the bar back to the default look; second press closes the

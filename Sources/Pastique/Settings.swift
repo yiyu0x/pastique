@@ -23,7 +23,16 @@ enum Settings {
             "richMode": false,
             "sortOrder": SortOrder.recency.rawValue,
             "viewStyle": ViewStyle.compact.rawValue,
+            "confirmDeleteClip": true,
         ])
+    }
+
+    /// Ask the user to confirm before deleting a clip from the picker.
+    /// First deletion shows an alert with a "Don't ask again" suppression
+    /// checkbox — once flipped off, subsequent ⌫ deletes go through silently.
+    static var confirmDeleteClip: Bool {
+        get { d.bool(forKey: "confirmDeleteClip") }
+        set { d.set(newValue, forKey: "confirmDeleteClip") }
     }
 
     static var showMenubarIcon: Bool {

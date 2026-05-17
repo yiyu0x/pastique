@@ -92,6 +92,11 @@ final class PickerViewModel: ObservableObject {
     /// the next runloop hop — too racy for the hover preview to refresh
     /// reliably when the user cycles chips with ←/→.
     var onSelectionChanged: () -> Void = {}
+    /// Owner (PickerPanel) shows an NSAlert with a suppression checkbox and
+    /// invokes the completion with (proceed, dontAskAgain). Default skips
+    /// the prompt so unit tests don't deadlock waiting for a UI response.
+    var onConfirmDelete: (ClipItem, @escaping (_ proceed: Bool, _ dontAskAgain: Bool) -> Void) -> Void
+        = { _, completion in completion(true, false) }
 
     init(store: ClipStore) {
         self.store = store
@@ -264,5 +269,40 @@ final class PickerViewModel: ObservableObject {
 
     func cancel() {
         onCancel()
+    }
+
+    // MARK: - Delete
+
+    /// Drop the currently selected clip from history. Routes through the
+    /// confirmation callback unless `Settings.confirmDeleteClip` has been
+    /// disabled via the alert's suppression checkbox. Keeps the selection
+    /// anchored at the same row index (i.e. the next clip slides up under
+    /// the user's cursor) instead of jumping back to the top.
+    func deleteSelected() {
+        guard items.indices.contains(selectedIndex) else { return }
+        let item = items[selectedIndex]
+        if Settings.confirmDeleteClip {
+            onConfirmDelete(item) { [weak self] proceed, dontAskAgain in
+                guard let self else { return }
+                if dontAskAgain { Settings.confirmDeleteClip = false }
+                if proceed { self.performDelete(id: item.id) }
+            }
+        } else {
+            performDelete(id: item.id)
+        }
+    }
+
+    private func performDelete(id: Int64) {
+        try? store.delete(id: id)
+        allItems.removeAll { $0.id == id }
+        let prevIdx = selectedIndex
+        recomputeAvailableFilters()
+        let q = query.lowercased()
+        items = allItems.filter { item in
+            kindFilter.matches(item) && (q.isEmpty || Self.matches(item, q))
+        }
+        selectedIndex = items.isEmpty ? 0 : min(prevIdx, items.count - 1)
+        scrollTick &+= 1
+        onSelectionChanged()
     }
 }

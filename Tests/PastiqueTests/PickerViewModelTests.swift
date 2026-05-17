@@ -411,6 +411,85 @@ struct PickerViewModelTests {
         #expect(vm.kindFilter == .all)
     }
 
+    // MARK: - Delete
+
+    @Test func deleteSelected_dropsRowAndAnchorsSelection() throws {
+        // Skip the confirmation prompt — the default callback proceeds immediately.
+        Settings.confirmDeleteClip = false
+        defer { Settings.confirmDeleteClip = true }
+
+        try store.insertText("alpha")
+        Thread.sleep(forTimeInterval: 0.01)
+        try store.insertText("beta")
+        Thread.sleep(forTimeInterval: 0.01)
+        try store.insertText("gamma")
+        vm.reload()
+
+        // Recency order: gamma, beta, alpha. Delete middle ("beta").
+        vm.moveDown()
+        #expect(vm.items[vm.selectedIndex].text == "beta")
+
+        vm.deleteSelected()
+        #expect(vm.items.count == 2)
+        #expect(vm.items.map(\.text) == ["gamma", "alpha"])
+        // Selection stays at the same index — the next row (alpha) is now under
+        // the user's cursor, not the top of the list.
+        #expect(vm.items[vm.selectedIndex].text == "alpha")
+    }
+
+    @Test func deleteSelected_clampsSelectionWhenLastRowGone() throws {
+        Settings.confirmDeleteClip = false
+        defer { Settings.confirmDeleteClip = true }
+
+        try store.insertText("a")
+        try store.insertText("b")
+        vm.reload()
+
+        vm.moveDown()
+        #expect(vm.selectedIndex == 1)
+        vm.deleteSelected()
+        #expect(vm.items.count == 1)
+        #expect(vm.selectedIndex == 0, "selection clamps into range after the tail row is gone")
+    }
+
+    @Test func deleteSelected_honorsConfirmationCallback() throws {
+        Settings.confirmDeleteClip = true
+        try store.insertText("keep me")
+        vm.reload()
+
+        var promptCount = 0
+        vm.onConfirmDelete = { _, completion in
+            promptCount += 1
+            completion(false, false)
+        }
+        vm.deleteSelected()
+        #expect(promptCount == 1)
+        #expect(vm.items.count == 1, "Cancel must leave the clip in place")
+    }
+
+    @Test func deleteSelected_suppressionDisablesFuturePrompts() throws {
+        Settings.confirmDeleteClip = true
+        defer { Settings.confirmDeleteClip = true }
+
+        try store.insertText("one")
+        try store.insertText("two")
+        vm.reload()
+
+        var promptCount = 0
+        vm.onConfirmDelete = { _, completion in
+            promptCount += 1
+            completion(true, true) // proceed + don't ask again
+        }
+        vm.deleteSelected()
+        #expect(promptCount == 1)
+        #expect(Settings.confirmDeleteClip == false)
+
+        // Second delete must skip the prompt entirely.
+        vm.deleteSelected()
+        #expect(promptCount == 1)
+        #expect(vm.items.isEmpty)
+    }
+
     @Test func toggleSortOrder_actuallyReorders() throws {
         try store.insertText("once")
         try store.insertText("many"); store.recordUse(id: try store.fetch()[0].id)

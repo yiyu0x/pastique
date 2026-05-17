@@ -20,6 +20,11 @@ final class PickerPanel: NSPanel {
     // time. The monitor flips searchActive synchronously, letting the bar
     // expand before the IME candidate window is positioned.
     private var keyMonitor: Any?
+    // Suppresses the resignKey → orderOut auto-hide while we're showing the
+    // delete-confirmation alert. The alert briefly steals key from the
+    // panel; without this guard the panel would hide itself behind the
+    // alert and never come back even if the user picks Cancel.
+    private var suppressAutoHide = false
 
     init(store: ClipStore, watcher: ClipboardWatcher?) {
         self.store = store
@@ -57,6 +62,9 @@ final class PickerPanel: NSPanel {
         viewModel.onCancel = { [weak self] in
             self?.hoverPreview.hide()
             self?.orderOut(nil)
+        }
+        viewModel.onConfirmDelete = { [weak self] item, completion in
+            self?.confirmDelete(of: item, completion: completion)
         }
 
         // Container view = visual effect (blur + rounded corners) + SwiftUI host on top.
@@ -179,6 +187,7 @@ final class PickerPanel: NSPanel {
 
     override func resignKey() {
         super.resignKey()
+        if suppressAutoHide { return }
         hoverPreview.hide()
         orderOut(nil)
     }
@@ -226,6 +235,38 @@ final class PickerPanel: NSPanel {
         case .text, .url, .phone, .email, .creditCard, .ssn, .address, .command:
             hoverPreview.hide()
         }
+    }
+
+    /// Modal confirmation for ⌫ deletion. Activates the app briefly so the
+    /// alert grabs focus (the picker is a nonactivating panel and otherwise
+    /// the alert would render behind the frontmost window). Suppression
+    /// checkbox lets the user opt out of future prompts; we hide the
+    /// preview behind the alert so it doesn't obscure the question.
+    private func confirmDelete(of item: ClipItem,
+                               completion: @escaping (_ proceed: Bool, _ dontAskAgain: Bool) -> Void) {
+        hoverPreview.hide()
+        let alert = NSAlert()
+        alert.messageText = "Delete this clip?"
+        // Truncate so an ultra-long copied paragraph doesn't blow up the
+        // alert window vertically. The preview is purely a confirmation
+        // anchor — the row in the picker already shows the full snippet.
+        let preview = String(item.preview.prefix(200))
+        alert.informativeText = preview.isEmpty ? "This clip will be removed from history." : preview
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Delete")
+        alert.addButton(withTitle: "Cancel")
+        alert.showsSuppressionButton = true
+        alert.suppressionButton?.title = "Don't ask again"
+
+        suppressAutoHide = true
+        NSApp.activate(ignoringOtherApps: true)
+        let response = alert.runModal()
+        suppressAutoHide = false
+        let dontAsk = alert.suppressionButton?.state == .on
+        completion(response == .alertFirstButtonReturn, dontAsk)
+        // Restore key focus so arrow keys / typing keep working without the
+        // user having to re-trigger the global hotkey.
+        makeKeyAndOrderFront(nil)
     }
 
     private func writeToPasteboard(_ item: ClipItem) {

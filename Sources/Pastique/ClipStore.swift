@@ -327,6 +327,20 @@ final class ClipStore {
         }
     }
 
+    /// Remove a single clip by id, and its image file if any. Idempotent —
+    /// a missing row is a no-op rather than an error. CASCADE on
+    /// clip_payloads wipes rich-mode payloads alongside the row.
+    func delete(id: Int64) throws {
+        _ = try pool.write { db in
+            let row = try ClipRow.fetchOne(db, key: id)
+            if let path = row?.image_path {
+                let url = self.imagesDir.appendingPathComponent(path)
+                try? FileManager.default.removeItem(at: url)
+            }
+            try ClipRow.deleteOne(db, key: id)
+        }
+    }
+
     func deleteAll() throws {
         _ = try pool.write { db in
             try ClipRow.deleteAll(db)
