@@ -88,51 +88,77 @@ jobs:
           echo "SPARKLE_SIGNED=true" >> $GITHUB_ENV
           rm sparkle_private.key
 
+      - name: Build changelog from git log
+        run: |
+          # GitHub's /releases/generate-notes API only fills "What's Changed"
+          # from PRs. Pastique merges direct to main, so that section is
+          # empty and Sparkle's WebView ends up with just a "Full Changelog"
+          # link floating in a sea of whitespace. Build the list ourselves
+          # from git log so the WebView always has real content, and the
+          # GitHub Release body and the appcast description stay in sync.
+          PREV=$(git tag --list 'v*' --sort=-v:refname \
+                  | grep -v "^${GITHUB_REF_NAME}$" \
+                  | head -1)
+          {
+            echo "## What's Changed"
+            echo
+            if [ -n "$PREV" ]; then
+              git log --no-merges --pretty='format:- %s (%h)' \
+                "${PREV}..${GITHUB_REF_NAME}"
+              echo
+              echo
+              echo "**Full Changelog**: https://github.com/${GITHUB_REPOSITORY}/compare/${PREV}...${GITHUB_REF_NAME}"
+            else
+              git log --no-merges --pretty='format:- %s (%h)' "${GITHUB_REF_NAME}"
+              echo
+            fi
+          } > changelog.md
+          echo "--- changelog.md ---"
+          cat changelog.md
+          echo "--- end ---"
+
+          # Compose the GitHub Release body: install boilerplate then the
+          # same changelog Sparkle will show. Single source of truth, no
+          # drift between the two surfaces.
+          cat > release-body.md <<BODY
+          ## Install
+
+          1. Download \`Pastique-${GITHUB_REF_NAME}.zip\` below
+          2. Unzip and move \`Pastique.app\` to \`/Applications\`
+          3. Open \`Pastique\` from \`/Applications\`. macOS will show **"Apple could not verify Pastique."** (Pastique is ad-hoc signed, not notarized.) To allow it:
+             - Open **System Settings → Privacy & Security**
+             - Scroll to the **Security** section
+             - Click **Open Anyway** next to the Pastique notice
+             - Confirm in the dialog
+             - One-time per install
+          4. Press \`⌘⇧V\` to open clipboard history.
+
+          Built from commit \`${GITHUB_SHA}\` — universal binary (arm64 + x86_64), macOS 13+. Future versions auto-update via Sparkle.
+
+          BODY
+          cat changelog.md >> release-body.md
+
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           files: |
             Pastique-*.zip
-          generate_release_notes: true
-          body: |
-            ## Install
-
-            1. Download `Pastique-${{ github.ref_name }}.zip` below
-            2. Unzip and move `Pastique.app` to `/Applications`
-            3. Open `Pastique` from `/Applications`. macOS will show **"Apple could not verify Pastique."** (Pastique is ad-hoc signed, not notarized.) To allow it:
-               - Open **System Settings → Privacy & Security**
-               - Scroll to the **Security** section
-               - Click **Open Anyway** next to the Pastique notice
-               - Confirm in the dialog
-               - One-time per install
-            4. Press `⌘⇧V` to open clipboard history.
-
-            Built from commit `${{ github.sha }}` — universal binary (arm64 + x86_64), macOS 13+. Future versions auto-update via Sparkle.
+          body_path: release-body.md
 
       - name: Render release notes for Sparkle dialog
         if: ${{ env.SPARKLE_SIGNED == 'true' }}
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Sparkle's update dialog has a WKWebView for release notes; if
-          # the appcast <item> has no <description>, that area is blank and
-          # the dialog looks unfinished. Use GitHub's auto-generated notes
-          # (the "What's Changed" list) — that's content actually relevant
-          # to a user already running the previous version, without the
-          # install boilerplate baked into the Release page body. Render
-          # Markdown → HTML via GitHub's /markdown endpoint so we don't
-          # need pandoc on the runner.
-          MD=$(gh api repos/${GITHUB_REPOSITORY}/releases/generate-notes \
-                  -f tag_name=${GITHUB_REF_NAME} \
-                  --jq .body)
-          if [ -z "$MD" ]; then
-            MD="Pastique ${PASTIQUE_VERSION}"
-          fi
-          jq -n --arg t "$MD" '{text:$t, mode:"gfm"}' \
+          # Render the same changelog.md to HTML via GitHub's /markdown
+          # endpoint (so we don't need pandoc on the runner) and persist
+          # it for the appcast step. The install boilerplate stays out of
+          # this file — it's irrelevant to a user already running the app.
+          jq -Rs '{text:., mode:"gfm"}' < changelog.md \
             | gh api -X POST /markdown --input - \
             > release-notes.html
-          echo "--- rendered release notes ---"
-          head -c 400 release-notes.html
+          echo "--- rendered release notes (first 600 bytes) ---"
+          head -c 600 release-notes.html
           echo
 
       - name: Update appcast on gh-pages
