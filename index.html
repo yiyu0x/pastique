@@ -880,16 +880,10 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
 }
 /* the side-preview anchor inside the spotlight needs to push left far enough */
 .wg-spotlight-stage .ppx-preview-anchor { z-index: 2; }
-/* Spotlight's preview should stack BELOW the picker — at all viewport sizes —
-   so it doesn't punch into the body copy on desktop or fall off-screen on
-   mobile. The picker stays anchored on the right; the preview appears under
-   it like a caption. */
-.wg-spotlight-frame .ppx-wrap { flex-direction: column; align-items: flex-start; }
-.wg-spotlight-frame .ppx-preview-anchor {
-  position: relative;
-  top: auto; right: auto; left: auto;
-  margin: 12px 0 0 !important;
-}
+/* On desktop, push the picker assembly further right so the floating preview
+   (which pops out to the LEFT of the picker) lands in the empty gap between
+   the body copy and the picker — not on top of the text. */
+.wg-spotlight-stage { justify-self: end; padding-left: 200px; }
 
 /* ---- final CTA ------------------------------------------------ */
 .wg-final { padding: 60px 80px 120px; }
@@ -1047,12 +1041,20 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
      but keep them in the spotlight where autoPreview cycles through samples. */
   .wg-card-front .ppx-preview-anchor,
   .wg-shot .ppx-preview-anchor { display: none !important; }
-  /* On mobile the spotlight stacks: scaled picker on top, preview directly
-     under it. Frame height auto-grows; stage clips horizontally so the
-     unscaled picker layout (440px wide) doesn't push the page wider. */
-  .wg-spotlight-frame .ppx-wrap { align-items: center !important; }
-  .wg-spotlight-frame { height: auto !important; overflow: visible !important; }
-  .wg-spotlight-stage { overflow: hidden !important; width: 100% !important; }
+  /* On mobile, the preview's default "left of the picker" position falls
+     off-screen. Stack picker → preview vertically (column-reverse, since the
+     anchor is the first child in DOM order). Reset the absolute positioning. */
+  .wg-spotlight-frame .ppx-wrap {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+  }
+  .wg-spotlight-frame .ppx-preview-anchor {
+    position: relative !important;
+    top: auto !important; right: auto !important; left: auto !important;
+    margin: 12px 0 0 !important;
+  }
+  .wg-spotlight-frame { height: auto !important; overflow: visible !important; padding: 0 !important; }
+  .wg-spotlight-stage { overflow: hidden !important; width: 100% !important; padding-left: 0 !important; }
 
   /* Compare table: horizontal scroll + visible affordance so users know it scrolls */
   .wg-compare {
