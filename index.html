@@ -1041,20 +1041,42 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
      but keep them in the spotlight where autoPreview cycles through samples. */
   .wg-card-front .ppx-preview-anchor,
   .wg-shot .ppx-preview-anchor { display: none !important; }
-  /* On mobile, the preview's default "left of the picker" position falls
-     off-screen. Stack picker → preview vertically (column-reverse, since the
-     anchor is the first child in DOM order). Reset the absolute positioning. */
-  .wg-spotlight-frame .ppx-wrap {
-    flex-direction: column-reverse !important;
-    align-items: center !important;
-  }
-  .wg-spotlight-frame .ppx-preview-anchor {
-    position: relative !important;
-    top: auto !important; right: auto !important; left: auto !important;
-    margin: 12px 0 0 !important;
-  }
-  .wg-spotlight-frame { height: auto !important; overflow: visible !important; padding: 0 !important; }
+  /* Mobile spotlight: same desktop layout (preview floats to the left of
+     the picker), just scale the whole wrap so the pair fits the viewport. */
   .wg-spotlight-stage { overflow: hidden !important; width: 100% !important; padding-left: 0 !important; }
+  .wg-spotlight-frame {
+    --spot-scale: 0.52;
+    height: calc(380px * var(--spot-scale)) !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+  }
+  /* Scale the wrap (which contains both preview-anchor and the picker)
+     together so they stay in their natural left/right relationship. */
+  .wg-spotlight-frame .ppx-wrap {
+    flex: 0 0 auto !important;
+    transform: scale(var(--spot-scale)) !important;
+    transform-origin: top center !important;
+    /* offset to compensate the preview-anchor that pops out to the left,
+       so the visual centre of the assembly sits on the viewport centre */
+    margin-left: calc(140px * var(--spot-scale)) !important;
+  }
+  /* The inner .ppx already had its own scale rule from the earlier mobile
+     block — clear it so we don't double-scale. */
+  .wg-spotlight-frame .ppx {
+    transform: none !important;
+  }
+  /* Preview anchor: keep its default absolute "left of picker" placement. */
+  .wg-spotlight-frame .ppx-preview-anchor {
+    position: absolute !important;
+    top: 0 !important;
+    right: 100% !important;
+    left: auto !important;
+    margin: 0 12px 0 0 !important;
+  }
 
   /* Compare table: horizontal scroll + visible affordance so users know it scrolls */
   .wg-compare {
