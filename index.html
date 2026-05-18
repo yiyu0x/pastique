@@ -1045,7 +1045,7 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
      the picker), just scale the whole wrap so the pair fits the viewport. */
   .wg-spotlight-stage { overflow: hidden !important; width: 100% !important; padding-left: 0 !important; }
   .wg-spotlight-frame {
-    --spot-scale: 0.52;
+    --spot-scale: 0.42;
     height: calc(380px * var(--spot-scale)) !important;
     overflow: hidden !important;
     width: 100% !important;
@@ -1054,6 +1054,8 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
     align-items: flex-start !important;
     padding: 0 !important;
   }
+  .wg-spotlight { padding: 24px 16px 36px !important; }
+  .wg-spotlight-grid { padding: 24px 18px !important; gap: 16px !important; }
   /* Scale the wrap (which contains both preview-anchor and the picker)
      together so they stay in their natural left/right relationship. */
   .wg-spotlight-frame .ppx-wrap {
@@ -1119,22 +1121,7 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
     transform-origin: top center !important;
   }
 
-  /* Spotlight picker (rendered at 440×380 via inline style) */
-  .wg-spotlight-stage { width: 100% !important; display: flex !important; justify-content: center; }
-  .wg-spotlight-frame {
-    --spot-scale: 0.70;
-    overflow: hidden !important;
-    width: 100% !important;
-    height: calc(380px * var(--spot-scale)) !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-  }
-  .wg-spotlight-frame .ppx {
-    flex: 0 0 auto !important;
-    transform: scale(var(--spot-scale)) !important;
-    transform-origin: top center !important;
-  }
+  /* (spotlight mobile rules are set above — preview + picker scale together) */
 
   /* Final card: tighten padding so the gradient card actually centers visually,
      and let the icon/headings sit on the centre line. */
@@ -1164,6 +1151,7 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
 
 @media (max-width: 480px) {
   :root { --hero-card-scale: 0.54; }
+  .wg-spotlight-frame { --spot-scale: 0.38 !important; }
   .wg-features { grid-template-columns: 1fr !important; }
   .wg-section { padding: 44px 16px !important; }
   .wg-hero { padding: 20px 16px 26px !important; }
@@ -1173,9 +1161,8 @@ body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-
   .wg-h2 { font-size: 28px !important; line-height: 1.12 !important; }
   .wg-eyebrow { font-size: 11px !important; }
 
-  /* Shots/spotlight: scale a touch more on the narrowest devices */
+  /* Shots: scale a touch more on the narrowest devices */
   .wg-shot-preview { --shot-scale: 0.56 !important; }
-  .wg-spotlight-frame { --spot-scale: 0.62 !important; }
 }
 
 @media (max-width: 380px) {
