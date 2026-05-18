@@ -1,0 +1,1159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Pastique — The clipboard tool macOS is missing.</title>
+<meta name="description" content="Sorted clipboard history for macOS. Press ⌘⇧V. Free, fast, private."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://pastique.yiyu0x.org/"/>
+<meta property="og:title" content="Pastique — The clipboard tool macOS is missing."/>
+<meta property="og:description" content="Sorted clipboard history for macOS. Press ⌘⇧V. Free, fast, private."/>
+<meta property="og:image" content="https://pastique.yiyu0x.org/og-image.png?v=2"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:site_name" content="Pastique"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Pastique — The clipboard tool macOS is missing."/>
+<meta name="twitter:description" content="Sorted clipboard history for macOS. Press ⌘⇧V. Free, fast, private."/>
+<meta name="twitter:image" content="https://pastique.yiyu0x.org/og-image.png?v=2"/>
+
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%201024%201024%22%20width=%221024%22%20height=%221024%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22glassBase%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%220%25%22%20y2=%22100%25%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22#FFEDDF%22/%3E%3Cstop%20offset=%2255%25%22%20stop-color=%22#F4D2C5%22/%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22#D9A99B%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id=%22gloss%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%220%25%22%20y2=%22100%25%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22#FFFFFF%22%20stop-opacity=%220.65%22/%3E%3Cstop%20offset=%2240%25%22%20stop-color=%22#FFFFFF%22%20stop-opacity=%220.15%22/%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22#FFFFFF%22%20stop-opacity=%220%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id=%22cardTop%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%220%25%22%20y2=%22100%25%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22#FFB100%22/%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22#E4587C%22/%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22#6B3A8F%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id=%22cardMid%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%220%25%22%20y2=%22100%25%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22#FFC340%22/%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22#EC7B97%22/%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22#8A5DA6%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id=%22cardBack%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%220%25%22%20y2=%22100%25%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22#FFD786%22/%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22#F2A1B6%22/%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22#AE8AC0%22/%3E%3C/linearGradient%3E%3CradialGradient%20id=%22discCool%22%20cx=%2250%25%22%20cy=%2250%25%22%20r=%2250%25%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22#B6CFE2%22%20stop-opacity=%220.55%22/%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22#B6CFE2%22%20stop-opacity=%220%22/%3E%3C/radialGradient%3E%3CradialGradient%20id=%22discWarm%22%20cx=%2250%25%22%20cy=%2250%25%22%20r=%2250%25%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22#D1A88E%22%20stop-opacity=%220.55%22/%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22#D1A88E%22%20stop-opacity=%220%22/%3E%3C/radialGradient%3E%3Cfilter%20id=%22softShadow%22%20x=%22-30%25%22%20y=%22-30%25%22%20width=%22160%25%22%20height=%22160%25%22%3E%3CfeGaussianBlur%20stdDeviation=%2218%22/%3E%3C/filter%3E%3CclipPath%20id=%22squircle%22%3E%3Crect%20x=%220%22%20y=%220%22%20width=%221024%22%20height=%221024%22%20rx=%22229%22%20ry=%22229%22/%3E%3C/clipPath%3E%3C/defs%3E%3Cg%20clip-path=%22url(#squircle)%22%3E%3Crect%20width=%221024%22%20height=%221024%22%20fill=%22url(#glassBase)%22/%3E%3Ccircle%20cx=%22300%22%20cy=%22260%22%20r=%22320%22%20fill=%22url(#discCool)%22/%3E%3Ccircle%20cx=%22780%22%20cy=%22820%22%20r=%22300%22%20fill=%22url(#discWarm)%22/%3E%3Crect%20width=%221024%22%20height=%22560%22%20fill=%22url(#gloss)%22/%3E%3Cg%20filter=%22url(#softShadow)%22%20opacity=%220.28%22%20transform=%22translate(14,%2022)%22%3E%3Crect%20x=%22280%22%20y=%22160%22%20width=%22500%22%20height=%22660%22%20rx=%2256%22%20fill=%22#000%22/%3E%3C/g%3E%3Cg%20transform=%22rotate(-8%20530%20510)%22%3E%3Crect%20x=%22280%22%20y=%22160%22%20width=%22500%22%20height=%22660%22%20rx=%2256%22%20fill=%22url(#cardBack)%22/%3E%3C/g%3E%3Cg%20transform=%22rotate(4%20512%20512)%22%3E%3Crect%20x=%22240%22%20y=%22190%22%20width=%22520%22%20height=%22660%22%20rx=%2256%22%20fill=%22url(#cardMid)%22/%3E%3C/g%3E%3Cg%20transform=%22rotate(-2%20512%20512)%22%3E%3Crect%20x=%22212%22%20y=%22220%22%20width=%22600%22%20height=%22660%22%20rx=%2260%22%20fill=%22url(#cardTop)%22/%3E%3Crect%20x=%22212%22%20y=%22220%22%20width=%22600%22%20height=%224%22%20rx=%222%22%20fill=%22#FFFFFF%22%20opacity=%220.55%22/%3E%3Crect%20x=%22270%22%20y=%22320%22%20width=%22380%22%20height=%2238%22%20rx=%2219%22%20fill=%22#FFFFFF%22%20opacity=%220.95%22/%3E%3Crect%20x=%22270%22%20y=%22400%22%20width=%22460%22%20height=%2238%22%20rx=%2219%22%20fill=%22#FFFFFF%22%20opacity=%220.82%22/%3E%3Crect%20x=%22270%22%20y=%22480%22%20width=%22310%22%20height=%2238%22%20rx=%2219%22%20fill=%22#FFFFFF%22%20opacity=%220.70%22/%3E%3Crect%20x=%22270%22%20y=%22560%22%20width=%22410%22%20height=%2238%22%20rx=%2219%22%20fill=%22#FFFFFF%22%20opacity=%220.55%22/%3E%3Crect%20x=%22270%22%20y=%22640%22%20width=%22250%22%20height=%2238%22%20rx=%2219%22%20fill=%22#FFFFFF%22%20opacity=%220.38%22/%3E%3C/g%3E%3C/g%3E%3Crect%20x=%222%22%20y=%222%22%20width=%221020%22%20height=%221020%22%20rx=%22227%22%20ry=%22227%22%20fill=%22none%22%20stroke=%22#000%22%20stroke-opacity=%220.06%22%20stroke-width=%222%22/%3E%3C/svg%3E"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/icon.png"/>
+<link rel="alternate icon" type="image/png" href="/icon.png"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+TC:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<style>
+html, body { margin: 0; padding: 0; background: #FFEDDF; }
+html { scroll-behavior: smooth; }
+body { font-family: "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif; min-height: 100vh; }
+.wg-section, .wg-hero { scroll-margin-top: 24px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.ppx-overlay { position: fixed !important; }
+
+/* inline SVG icon matches the squircle look of the old .png */
+.pq-icon { display: block; border-radius: 22%; }
+
+/* ============================================================
+   Pastique picker — accurate to the real macOS panel.
+   Search bar at top · 7 categories incl. Color · side hover preview
+   ============================================================ */
+.ppx-overlay {
+  position: fixed; inset: 0;
+  background: rgba(20, 12, 16, 0.32);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9999;
+  animation: ppxFade 0.18s ease;
+}
+@keyframes ppxFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ppxPop  { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
+
+/* wrap so a side preview can dock left of the panel */
+.ppx-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.ppx-preview-anchor {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  margin-right: 12px;
+  animation: ppxPreviewPop 0.16s cubic-bezier(.2,.7,.2,1);
+}
+@keyframes ppxPreviewPop {
+  from { opacity: 0; transform: translateX(8px) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---- panel body --------------------------------------------- */
+.ppx {
+  background: rgba(48, 42, 50, 0.78);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.08) inset,
+    0 0 0 1px rgba(255,255,255,.06),
+    0 24px 60px -10px rgba(0,0,0,.45),
+    0 8px 16px -4px rgba(0,0,0,.25);
+  color: #f0e9ec;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+  animation: ppxPop 0.18s cubic-bezier(.2,.7,.2,1);
+}
+
+/* ---- search (appears only when user types) ---------------- */
+.ppx-search {
+  display: flex; align-items: center; gap: 10px;
+  margin: 10px 10px 0 10px;
+  padding: 0 12px;
+  height: 36px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 200, 230, 0.18),
+    0 0 0 2px rgba(168, 124, 152, 0.45);
+  color: rgba(240, 233, 236, 0.85);
+  animation: ppxSearchPop 0.14s ease-out;
+}
+@keyframes ppxSearchPop {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+.ppx-search-text {
+  flex: 1;
+  color: rgba(240, 233, 236, 0.95);
+  font-size: 13.5px;
+  display: inline-flex;
+  align-items: center;
+  font-feature-settings: "tnum" 1;
+}
+.ppx-caret {
+  display: inline-block;
+  width: 1.5px;
+  height: 15px;
+  background: rgba(240, 233, 236, 0.85);
+  margin-left: 1px;
+  animation: ppxCaret 1s steps(1) infinite;
+}
+@keyframes ppxCaret { 50% { opacity: 0; } }
+
+.ppx-search-clear {
+  background: transparent;
+  border: 0; cursor: pointer;
+  padding: 2px;
+  color: rgba(240, 233, 236, 0.8);
+  display: inline-flex; align-items: center;
+  border-radius: 50%;
+}
+.ppx-search-clear:hover { color: #fff; }
+
+/* ---- list --------------------------------------------------- */
+.ppx-list {
+  flex: 1; min-height: 0;
+  overflow-y: auto;
+  padding: 6px 6px 2px 6px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.12) transparent;
+}
+.ppx-list::-webkit-scrollbar { width: 8px; }
+.ppx-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 4px; }
+.ppx-list::-webkit-scrollbar-track { background: transparent; }
+
+.ppx-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: default;
+  color: rgba(240, 233, 236, 0.92);
+  font-feature-settings: "tnum" 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.ppx-row .ppx-label {
+  flex: 1; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.ppx-row.sel {
+  background: linear-gradient(180deg, rgba(168, 124, 152, 0.55) 0%, rgba(133, 92, 130, 0.55) 100%);
+  color: #fff;
+  box-shadow: 0 0 0 0.5px rgba(255, 220, 240, 0.08) inset;
+}
+.ppx-row.copied {
+  background: linear-gradient(180deg, rgba(255, 177, 0, 0.55) 0%, rgba(228, 88, 124, 0.55) 100%);
+}
+.ppx-copied {
+  font-size: 11px;
+  color: rgba(255,255,255,.92);
+  padding: 2px 7px;
+  border-radius: 9px;
+  background: rgba(0,0,0,.18);
+  margin-left: 8px;
+  letter-spacing: .02em;
+}
+.ppx-empty {
+  padding: 36px 12px;
+  text-align: center;
+  color: rgba(240, 233, 236, 0.45);
+  font-size: 13px;
+}
+
+/* ---- categories (bottom) ----------------------------------- */
+.ppx-cats {
+  display: flex;
+  gap: 4px;
+  padding: 8px 8px 6px 8px;
+  border-top: 0.5px solid rgba(255,255,255,.06);
+  background: rgba(0,0,0,.04);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.ppx-cats::-webkit-scrollbar { display: none; }
+.ppx-cat {
+  flex: 1 0 auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: transparent;
+  border: 0;
+  color: rgba(240, 233, 236, 0.62);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .12s ease, color .12s ease;
+  white-space: nowrap;
+}
+.ppx-cat:hover { background: rgba(255,255,255,.05); color: rgba(240, 233, 236, 0.85); }
+.ppx-cat.on {
+  background: linear-gradient(180deg, rgba(168, 124, 152, 0.55) 0%, rgba(133, 92, 130, 0.55) 100%);
+  color: #fff;
+}
+
+/* ---- hint bar ---------------------------------------------- */
+.ppx-hints {
+  display: flex; align-items: center; gap: 14px;
+  padding: 6px 12px 9px 12px;
+  font-size: 11px;
+  color: rgba(240, 233, 236, 0.48);
+  letter-spacing: 0.01em;
+  border-top: 0.5px solid rgba(255,255,255,.04);
+}
+.ppx-hint { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.ppx-hint-mid { color: rgba(240, 233, 236, 0.62); }
+.ppx-gear {
+  background: transparent; border: 0; cursor: pointer;
+  color: rgba(240, 233, 236, 0.55);
+  margin-left: auto; padding: 2px 4px; border-radius: 4px;
+  display: inline-flex; align-items: center;
+}
+.ppx-gear:hover { background: rgba(255,255,255,.05); color: #fff; }
+
+/* ---- hover preview (side panel) --------------------------- */
+.ppx-preview {
+  width: 240px;
+  background: rgba(48, 42, 50, 0.78);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border-radius: 12px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.08) inset,
+    0 0 0 1px rgba(255,255,255,.06),
+    0 20px 50px -10px rgba(0,0,0,.45);
+  overflow: hidden;
+  color: #f0e9ec;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+.ppx-preview-swatch {
+  width: 100%;
+  height: 110px;
+  border-bottom: 0.5px solid rgba(255,255,255,.06);
+}
+.ppx-preview-image {
+  width: 100%;
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 0.5px solid rgba(255,255,255,.06);
+}
+.ppx-preview-meta {
+  padding: 12px 14px 14px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.ppx-preview-row {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
+  font-family: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, monospace;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+.ppx-preview-row > span:first-child {
+  color: rgba(240, 233, 236, 0.45);
+  letter-spacing: 0.04em;
+}
+.ppx-preview-row > span:last-child {
+  color: rgba(240, 233, 236, 0.92);
+}
+
+/* ---- language toggle (used elsewhere on the page) --------- */
+.lang-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  font-family: ui-sans-serif, -apple-system, system-ui, sans-serif;
+}
+.lang-toggle button {
+  background: transparent; border: 0; cursor: pointer;
+  font: inherit;
+  padding: 2px 4px;
+  color: inherit;
+  opacity: 0.45;
+  transition: opacity .15s ease;
+}
+.lang-toggle button:hover { opacity: 0.85; }
+.lang-toggle button.on { opacity: 1; font-weight: 600; }
+.lang-toggle .sep { opacity: 0.25; }
+
+/* ---- kbd badge -------------------------------------------- */
+.kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 22px; padding: 0 5px;
+  border-radius: 5px;
+  font-size: 11.5px; font-weight: 500;
+  font-family: ui-sans-serif, -apple-system, system-ui, sans-serif;
+  background: rgba(255,255,255,.85);
+  color: #2a1f24;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.08);
+  vertical-align: 1px;
+}
+.kbd.dark {
+  background: rgba(30, 20, 26, 0.85);
+  color: rgba(255, 240, 232, 0.92);
+  box-shadow: inset 0 0 0 0.5px rgba(255,255,255,.08), 0 1px 0 rgba(0,0,0,.5);
+}
+
+
+/* ============================================================
+   Variation 1 — Warm Glass
+   Palette anchored to the Pastique icon:
+     base   #FFEDDF → #F4D2C5 → #D9A99B (peach glass)
+     accents #FFB100 (amber) · #E4587C (coral) · #6B3A8F (plum)
+   ============================================================ */
+.wg-root {
+  --ink:        #2a1f24;
+  --ink-soft:   #4b3a40;
+  --ink-faint:  #7e6e74;
+  --cream:      #fff7ee;
+  --peach-50:   #FFEDDF;
+  --peach-100:  #F4D2C5;
+  --peach-200:  #E8B6A6;
+  --peach-300:  #D9A99B;
+  --amber:      #FFB100;
+  --coral:      #E4587C;
+  --plum:       #6B3A8F;
+  --plum-soft:  #8A5DA6;
+
+  --font-display: "Instrument Serif", "Noto Serif TC", "Songti TC", "Songti SC", Georgia, serif;
+  --font-sans:    "Inter", -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+  isolation: isolate;
+}
+.wg-root[data-lang="zh"] { --font-display: "Noto Serif TC", "Songti TC", "Source Han Serif TC", Georgia, serif; }
+
+/* ---- background ----------------------------------------------- */
+.wg-bg { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.wg-grad-base {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 18% 8%, #FFF6EC 0%, transparent 55%),
+    radial-gradient(ellipse at 110% 22%, #F8D6C8 0%, transparent 50%),
+    linear-gradient(180deg, #FFEDDF 0%, #F4D2C5 60%, #E8B6A6 100%);
+}
+.wg-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.55; }
+.wg-blob-a { width: 760px; height: 760px; left: -180px; top: 10%; background: radial-gradient(circle, rgba(255,177,0,0.45) 0%, transparent 70%); }
+.wg-blob-b { width: 900px; height: 900px; right: -260px; top: 30%; background: radial-gradient(circle, rgba(228,88,124,0.40) 0%, transparent 70%); }
+.wg-blob-c { width: 1100px; height: 1100px; left: 30%; bottom: -300px; background: radial-gradient(circle, rgba(107,58,143,0.32) 0%, transparent 70%); }
+.wg-grain {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+/* ---- nav ------------------------------------------------------ */
+.wg-nav {
+  display: flex; align-items: center;
+  padding: 22px 56px;
+  position: relative;
+  z-index: 1;
+}
+.wg-nav-left { flex: 1; }
+.wg-nav-mid { display: flex; gap: 28px; }
+.wg-nav-mid a {
+  font-size: 14px; color: var(--ink-soft); text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.wg-nav-mid a:hover { color: var(--ink); }
+.wg-nav-right { flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 18px; }
+.wg-nav-cta {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 13px; font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.wg-nav-cta:hover { background: #1a1014; }
+
+.wg-mark {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--ink);
+}
+.wg-mark img { border-radius: 7px; box-shadow: 0 2px 6px rgba(107,58,143,0.18); }
+
+/* ---- hero ----------------------------------------------------- */
+.wg-hero {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 56px;
+  padding: 60px 80px 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.wg-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+.wg-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 3px rgba(228,88,124,0.18); }
+
+.wg-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(56px, 6vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 28px 0;
+}
+.wg-h1-line { display: block; }
+.wg-h1-line:nth-child(2) {
+  font-style: italic;
+  background: linear-gradient(120deg, var(--amber) 0%, var(--coral) 50%, var(--plum) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.wg-root[data-lang="zh"] .wg-h1 { font-size: clamp(48px, 5.4vw, 80px); line-height: 1.05; }
+
+.wg-sub {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  max-width: 540px;
+  margin: 0 0 36px 0;
+  text-wrap: pretty;
+}
+
+.wg-cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: stretch; }
+.wg-cta-row-center { justify-content: center; }
+
+.wg-cta-primary {
+  display: inline-flex; flex-direction: column; justify-content: center;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, var(--ink) 0%, #3d2429 100%);
+  color: var(--cream);
+  border-radius: 14px;
+  text-decoration: none;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.06) inset,
+    0 8px 20px -6px rgba(42,31,36,0.4),
+    0 2px 0 rgba(255,255,255,.55);
+  transition: transform .1s ease;
+}
+.wg-cta-primary:hover { transform: translateY(-1px); }
+.wg-cta-label { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; }
+.wg-cta-sub { font-size: 11.5px; color: rgba(255,247,238,0.55); letter-spacing: 0.04em; }
+
+.wg-cta-secondary {
+  position: relative;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 18px;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(20px);
+  border: 0.5px solid rgba(255,255,255,0.8);
+  color: var(--ink);
+  border-radius: 14px;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: none;
+  box-shadow: 0 8px 20px -10px rgba(42,31,36,0.2);
+  transition: background .15s ease, transform .15s ease;
+  isolation: isolate;
+}
+.wg-cta-secondary:hover {
+  background: rgba(255,255,255,0.75);
+  transform: translateY(-1px);
+}
+/* breathing glow halo to pull the eye */
+.wg-cta-secondary::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, rgba(255,177,0,0.55), rgba(228,88,124,0.55), rgba(107,58,143,0.55));
+  filter: blur(14px);
+  opacity: 0.55;
+  z-index: -1;
+  animation: wgGlowBreath 2.4s ease-in-out infinite;
+}
+@keyframes wgGlowBreath {
+  0%, 100% { opacity: 0.4; transform: scale(0.96); }
+  50%      { opacity: 0.85; transform: scale(1.06); }
+}
+.wg-cta-secondary:hover::before { animation-duration: 1.2s; opacity: 0.95; }
+
+/* faint outer ring that ripples outward */
+.wg-cta-secondary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  box-shadow: 0 0 0 0 rgba(228,88,124,0.45);
+  z-index: -1;
+  animation: wgRipple 2.4s cubic-bezier(.3,.7,.2,1) infinite;
+  pointer-events: none;
+}
+@keyframes wgRipple {
+  0%   { box-shadow: 0 0 0 0 rgba(228,88,124,0.45); }
+  70%  { box-shadow: 0 0 0 14px rgba(228,88,124,0); }
+  100% { box-shadow: 0 0 0 0 rgba(228,88,124,0); }
+}
+
+.wg-cta-try-label { font-size: 14px; font-weight: 500; }
+.wg-cta-try-kbd { display: inline-flex; gap: 3px; }
+
+/* kbd chips play the shortcut in sequence to teach the gesture */
+.wg-cta-secondary .wg-cta-try-kbd .kbd {
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  animation: wgKbdPress 2.4s cubic-bezier(.4,.7,.4,1) infinite;
+}
+.wg-cta-secondary .wg-cta-try-kbd .kbd:nth-child(1) { animation-delay: 0s; }
+.wg-cta-secondary .wg-cta-try-kbd .kbd:nth-child(2) { animation-delay: 0.18s; }
+.wg-cta-secondary .wg-cta-try-kbd .kbd:nth-child(3) { animation-delay: 0.36s; }
+@keyframes wgKbdPress {
+  0%, 18%, 100% { transform: translateY(0); background: rgba(30,20,26,0.85); color: rgba(255,240,232,0.92); }
+  22%           { transform: translateY(2px); background: rgba(228,88,124,0.95); color: #fff; box-shadow: inset 0 0 0 0.5px rgba(255,255,255,.08), 0 0 0 rgba(0,0,0,0); }
+  40%, 100%     { transform: translateY(0); background: rgba(30,20,26,0.85); color: rgba(255,240,232,0.92); }
+}
+
+/* pause the noisy animation while user is hovering — they got the message */
+.wg-cta-secondary:hover .wg-cta-try-kbd .kbd { animation-play-state: paused; transform: none; }
+.wg-cta-secondary:hover::after { animation-play-state: paused; opacity: 0; }
+
+.wg-cta-ghost { background: transparent; border: 0.5px solid rgba(42,31,36,0.2); box-shadow: none; }
+.wg-cta-ghost:hover { background: rgba(255,255,255,0.4); }
+/* don't pulse the ghost variant — only the hero "Try it now" is the hook */
+.wg-cta-ghost::before, .wg-cta-ghost::after { display: none; }
+.wg-cta-ghost .kbd { animation: none !important; }
+
+.wg-cta-hint {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+/* ---- hero visual (stacked cards w/ live picker) --------------- */
+.wg-hero-visual { position: relative; }
+.wg-stack {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  display: flex; align-items: center; justify-content: center;
+}
+.wg-card {
+  position: absolute;
+  border-radius: 28px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.4) inset,
+    0 24px 60px -10px rgba(107,58,143,0.35),
+    0 2px 12px rgba(228,88,124,0.18);
+}
+.wg-card-back {
+  width: 380px; height: 480px;
+  background: linear-gradient(180deg, #FFD786 0%, #F2A1B6 50%, #AE8AC0 100%);
+  transform: rotate(-9deg) translate(-110px, 16px);
+  opacity: 0.85;
+}
+.wg-card-mid {
+  width: 400px; height: 490px;
+  background: linear-gradient(180deg, #FFC340 0%, #EC7B97 50%, #8A5DA6 100%);
+  transform: rotate(5deg) translate(70px, -10px);
+  opacity: 0.9;
+}
+.wg-card-front {
+  width: 540px; height: 440px;
+  background: linear-gradient(180deg, #FFB100 0%, #E4587C 50%, #6B3A8F 100%);
+  transform: rotate(-2deg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 10px;
+}
+.wg-picker-frame {
+  transform: rotate(2deg); /* counter-rotate inside the tilted card */
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,.18));
+}
+.wg-stack-caption {
+  position: absolute;
+  bottom: -8px; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ---- generic section --------------------------------------- */
+.wg-section { padding: 100px 80px; position: relative; z-index: 1; }
+.wg-section-head { max-width: 820px; margin-bottom: 56px; }
+.wg-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 4.5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.wg-h2 span { display: block; }
+.wg-h2 span:nth-child(2) { font-style: italic; color: var(--plum); }
+.wg-root[data-lang="zh"] .wg-h2 { font-size: clamp(34px, 3.6vw, 50px); line-height: 1.15; }
+
+/* ---- features ------------------------------------------------- */
+.wg-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.wg-feature {
+  background: rgba(255, 247, 238, 0.55);
+  backdrop-filter: blur(24px);
+  border: 0.5px solid rgba(255,255,255,0.7);
+  border-radius: 20px;
+  padding: 28px 26px;
+  display: flex; flex-direction: column;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+.wg-feature::before {
+  content: "";
+  position: absolute; inset: -1px;
+  background: linear-gradient(140deg, rgba(255,177,0,0.0) 0%, rgba(228,88,124,0.1) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+.wg-feature-0::after, .wg-feature-1::after, .wg-feature-2::after, .wg-feature-3::after {
+  content: "";
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.wg-feature-0::after { background: var(--amber); top: -60px; right: -50px; }
+.wg-feature-1::after { background: var(--coral); top: -60px; right: -50px; }
+.wg-feature-2::after { background: var(--plum-soft); top: -60px; right: -50px; }
+.wg-feature-3::after { background: var(--peach-300); top: -60px; right: -50px; }
+
+.wg-feature-num {
+  font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  margin-bottom: 36px;
+}
+.wg-feature h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  margin: 0 0 12px 0;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.wg-feature p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 20px 0;
+  flex: 1;
+  text-wrap: pretty;
+}
+.wg-feature-chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  background: rgba(255,255,255,0.5);
+  border: 0.5px solid rgba(42,31,36,0.08);
+  padding: 5px 9px;
+  border-radius: 6px;
+  align-self: flex-start;
+}
+
+/* ---- why / compare ------------------------------------------- */
+.wg-compare {
+  background: rgba(255, 247, 238, 0.55);
+  backdrop-filter: blur(24px);
+  border: 0.5px solid rgba(255,255,255,0.7);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.wg-compare-head, .wg-compare-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 1.4fr;
+  align-items: center;
+}
+.wg-compare-head {
+  padding: 18px 28px;
+  border-bottom: 0.5px solid rgba(42,31,36,0.1);
+  font-size: 13px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.wg-compare-pas {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--ink);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.wg-compare-pas img { border-radius: 5px; }
+
+.wg-compare-row {
+  padding: 18px 28px;
+  border-bottom: 0.5px solid rgba(42,31,36,0.06);
+  font-size: 14.5px;
+}
+.wg-compare-row:last-child { border-bottom: 0; }
+.wg-compare-k { color: var(--ink-soft); font-weight: 500; }
+.wg-compare-pas-cell { color: var(--ink); font-weight: 500; display: inline-flex; align-items: center; gap: 8px; }
+.wg-compare-oth-cell { color: var(--ink-faint); font-family: var(--font-mono); font-size: 13px; }
+.wg-check {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), var(--coral));
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* ---- shots ---------------------------------------------------- */
+.wg-shots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.wg-shot {
+  background: rgba(255, 247, 238, 0.55);
+  backdrop-filter: blur(24px);
+  border: 0.5px solid rgba(255,255,255,0.7);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.wg-shot-preview {
+  height: 360px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.wg-shot-warm .wg-shot-preview {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,177,0,0.5) 0%, transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(228,88,124,0.5) 0%, transparent 60%),
+    linear-gradient(135deg, #FFE3CF 0%, #F3B5A6 100%);
+}
+.wg-shot-cool .wg-shot-preview {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(107,58,143,0.4) 0%, transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(228,88,124,0.4) 0%, transparent 60%),
+    linear-gradient(135deg, #E9CFE6 0%, #C5A4D2 100%);
+}
+.wg-shot-preview .ppx { transform: scale(0.78); }
+.wg-shot-text { padding: 22px 24px 28px; }
+.wg-shot-text h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 22px;
+  margin: 0 0 8px 0;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.wg-shot-text p {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+/* ---- spotlight (hover-preview showcase) --------------------- */
+.wg-spotlight { padding-top: 40px; padding-bottom: 100px; }
+.wg-spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 56px;
+  align-items: center;
+  background: rgba(255, 247, 238, 0.55);
+  backdrop-filter: blur(24px);
+  border: 0.5px solid rgba(255,255,255,0.7);
+  border-radius: 28px;
+  padding: 56px 56px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.wg-spotlight-grid::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(ellipse at 80% 20%, rgba(255,177,0,0.18) 0%, transparent 50%);
+  pointer-events: none;
+}
+.wg-spotlight-text { position: relative; z-index: 1; }
+.wg-spotlight-h2 { font-size: clamp(34px, 3.6vw, 48px); margin-bottom: 24px; }
+.wg-spotlight-h2 span:nth-child(2) { color: var(--coral); }
+.wg-spotlight-sub { font-size: 17px; max-width: 460px; margin-bottom: 32px; }
+.wg-spotlight-bullets {
+  display: flex; flex-direction: column; gap: 12px;
+  padding: 18px 0;
+  border-top: 0.5px solid rgba(42,31,36,0.12);
+  border-bottom: 0.5px solid rgba(42,31,36,0.12);
+}
+.wg-spotlight-bullet {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+.wg-spotlight-bullet-k {
+  color: var(--coral);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.wg-spotlight-stage {
+  position: relative;
+  height: 460px;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1;
+}
+.wg-spotlight-stage::before {
+  content: "";
+  position: absolute;
+  width: 80%; height: 80%;
+  top: 10%; left: 10%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(228, 88, 124, 0.35) 0%, transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(107, 58, 143, 0.3) 0%, transparent 60%);
+  filter: blur(30px);
+  border-radius: 50%;
+}
+.wg-spotlight-frame {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 20px 40px rgba(107,58,143,0.25));
+}
+/* the side-preview anchor inside the spotlight needs to push left far enough */
+.wg-spotlight-stage .ppx-preview-anchor { z-index: 2; }
+
+/* ---- final CTA ------------------------------------------------ */
+.wg-final { padding: 60px 80px 120px; }
+.wg-final-card {
+  position: relative;
+  background: linear-gradient(160deg, #FFB100 0%, #E4587C 50%, #6B3A8F 100%);
+  border-radius: 28px;
+  padding: 80px 60px 90px;
+  text-align: center;
+  color: var(--cream);
+  overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgba(107,58,143,0.4);
+}
+.wg-final-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% -30%, rgba(255,255,255,0.45) 0%, transparent 60%);
+  pointer-events: none;
+}
+.wg-final-icon { margin: 0 auto 24px; display: block; border-radius: 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.wg-final-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 18px 0;
+  color: var(--cream);
+}
+.wg-final-sub {
+  max-width: 540px;
+  margin: 0 auto 36px;
+  font-size: 17px;
+  color: rgba(255,247,238,0.85);
+  line-height: 1.55;
+}
+.wg-final .wg-cta-primary {
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 0 10px 24px -8px rgba(0,0,0,0.3);
+}
+.wg-final .wg-cta-label { color: var(--ink); }
+.wg-final .wg-cta-sub { color: rgba(42,31,36,0.55); }
+.wg-final .wg-cta-ghost {
+  background: transparent;
+  border: 0.5px solid rgba(255,247,238,0.5);
+  color: var(--cream);
+}
+.wg-final .wg-cta-ghost:hover { background: rgba(255,247,238,0.1); }
+
+/* ---- footer --------------------------------------------------- */
+.wg-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 40px 80px 60px;
+  position: relative; z-index: 1;
+  border-top: 0.5px solid rgba(42,31,36,0.1);
+}
+.wg-footer-left { display: flex; align-items: center; gap: 24px; }
+.wg-footer-tag { font-size: 13px; color: var(--ink-faint); }
+.wg-footer-right { display: flex; gap: 24px; }
+.wg-footer-right a {
+  font-size: 13px; color: var(--ink-soft); text-decoration: none;
+}
+.wg-footer-right a:hover { color: var(--ink); }
+
+
+
+
+
+
+/* === Mobile responsive overrides (added by deploy step) === */
+
+
+
+
+
+
+
+/* === Mobile responsive overrides === */
+/* Strategy for shrinking the React-rendered pickers (rendered at fixed
+   pixel widths via inline style) without forcing the page wider than the
+   viewport: give the *parent* a layout box equal to the scaled size, then
+   transform: scale the picker inside an overflow:hidden clip. */
+:root { --hero-card-scale: 0.60; }
+
+@media (max-width: 900px) {
+  html, body { overflow-x: hidden; }
+  .wg-hero {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 24px 20px 36px !important;
+    align-items: start !important;
+  }
+  .wg-hero-visual {
+    width: 100% !important;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  .wg-stack {
+    position: relative !important;
+    width: calc(540px * var(--hero-card-scale)) !important;
+    height: calc(440px * var(--hero-card-scale)) !important;
+    display: block !important;
+    margin: 0 auto;
+  }
+  .wg-stack > .wg-card { position: absolute !important; inset: 0 !important; transform-origin: top left !important; }
+  .wg-card-back, .wg-card-mid { display: none !important; }
+  .wg-card-front {
+    width: 540px !important;
+    height: 440px !important;
+    transform: rotate(0deg) scale(var(--hero-card-scale)) !important;
+    transform-origin: top left !important;
+    padding: 8px !important;
+  }
+  .wg-picker-frame { transform: none !important; }
+  /* Mobile users can't press ⌘⇧V — the caption is just noise */
+  .wg-stack-caption { display: none !important; }
+
+  .wg-spotlight-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+    padding: 28px 22px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  :root { --hero-card-scale: 0.58; }
+  .wg-nav { padding: 14px 18px !important; gap: 12px; }
+  .wg-nav-mid { display: none !important; }
+  .wg-nav-right { gap: 10px; }
+  /* No download button in the nav on mobile — the page already says it's macOS-only */
+  .wg-nav-right .wg-nav-cta { display: none !important; }
+
+  .wg-section { padding: 56px 20px !important; }
+  .wg-spotlight { padding: 24px 20px 64px !important; }
+  .wg-final { padding: 40px 16px 72px !important; }
+  .wg-features { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  .wg-feature { min-height: auto !important; padding: 20px 18px !important; }
+  .wg-feature-num { margin-bottom: 18px !important; }
+  .wg-footer { flex-direction: column !important; gap: 16px !important; padding: 32px 20px 48px !important; text-align: center; }
+  .wg-footer-left, .wg-footer-right { width: 100%; justify-content: center; flex-wrap: wrap; }
+  .wg-cta-row, .wg-cta-row-center { flex-direction: column !important; align-items: stretch !important; width: 100% !important; max-width: 100% !important; }
+  /* Border-box so width:100% includes padding instead of overflowing the parent */
+  .wg-cta-primary, .wg-cta-secondary, .wg-cta-ghost { width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; justify-content: center; }
+  .wg-spotlight-bullet { grid-template-columns: 56px 1fr !important; }
+
+  /* Grid/flex children default to min-width: auto which lets them expand to
+     fit their content (the React pickers have fixed inline widths) — force
+     min-width: 0 so the grid column actually respects the viewport. */
+  .wg-spotlight-grid, .wg-shots-grid, .wg-final-card { min-width: 0 !important; }
+  .wg-spotlight-grid > *, .wg-shots-grid > *, .wg-shot > *, .wg-final-card > * { min-width: 0 !important; max-width: 100% !important; }
+  .wg-final-card { overflow: hidden !important; box-sizing: border-box !important; }
+  .ppx-preview-anchor { display: none !important; }
+
+  /* Compare table: horizontal scroll + visible affordance so users know it scrolls */
+  .wg-compare {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    /* fade out the right edge as a "more →" hint */
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 28px), transparent 100%);
+            mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 28px), transparent 100%);
+  }
+  .wg-compare-head, .wg-compare-row { min-width: 560px !important; font-size: 13px !important; }
+  .wg-compare-head, .wg-compare-k, .wg-compare-pas-cell, .wg-compare-oth-cell { padding: 10px 8px !important; }
+  .wg-why .wg-section-head::after {
+    content: "← swipe to compare →";
+    display: block;
+    margin: 14px 0 -8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* Shots pickers (rendered at 420×340 via inline style): wrap in an
+     overflow:hidden box sized to the scaled picker so layout dimensions
+     match what the user actually sees. */
+  .wg-shots-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .wg-shot { overflow: hidden !important; }
+  .wg-shot-preview {
+    --shot-scale: 0.64;
+    height: calc(340px * var(--shot-scale)) !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+  .wg-shot-preview .ppx {
+    flex: 0 0 auto !important;
+    transform: scale(var(--shot-scale)) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Spotlight picker (rendered at 440×380 via inline style) */
+  .wg-spotlight-stage { width: 100% !important; display: flex !important; justify-content: center; }
+  .wg-spotlight-frame {
+    --spot-scale: 0.70;
+    overflow: hidden !important;
+    width: 100% !important;
+    height: calc(380px * var(--spot-scale)) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+  }
+  .wg-spotlight-frame .ppx {
+    flex: 0 0 auto !important;
+    transform: scale(var(--spot-scale)) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Final card: tighten padding so the gradient card actually centers visually,
+     and let the icon/headings sit on the centre line. */
+  .wg-final-card { padding: 48px 22px 56px !important; border-radius: 22px !important; }
+  .wg-final-h2 { font-size: 34px !important; line-height: 1.1 !important; }
+  .wg-final-sub { font-size: 15px !important; margin-bottom: 24px !important; }
+  /* Hide primary download CTA on mobile, keep "Source on GitHub" */
+  .wg-final .wg-cta-primary { display: none !important; }
+
+  /* Mobile users can't use ⌘⇧V or run a Mac app — hide hero CTAs + hint, show clear note */
+  .wg-hero .wg-cta-row,
+  .wg-hero .wg-cta-hint { display: none !important; }
+  .wg-hero-text::after {
+    content: "macOS-only app — open this page on your Mac to install.";
+    display: block;
+    margin-top: 18px;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 0.5px solid rgba(75, 58, 64, 0.14);
+    border-radius: 12px;
+    color: #4b3a40;
+    font-size: 13px;
+    line-height: 1.45;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}
+
+@media (max-width: 480px) {
+  :root { --hero-card-scale: 0.54; }
+  .wg-features { grid-template-columns: 1fr !important; }
+  .wg-section { padding: 44px 16px !important; }
+  .wg-hero { padding: 20px 16px 26px !important; }
+  /* Hero copy: cap H1 + sub so they breathe instead of stuffing the viewport */
+  .wg-h1 { font-size: 32px !important; line-height: 1.08 !important; letter-spacing: -0.02em !important; }
+  .wg-sub { font-size: 14.5px !important; line-height: 1.5 !important; }
+  .wg-h2 { font-size: 28px !important; line-height: 1.12 !important; }
+  .wg-eyebrow { font-size: 11px !important; }
+
+  /* Shots/spotlight: scale a touch more on the narrowest devices */
+  .wg-shot-preview { --shot-scale: 0.56 !important; }
+  .wg-spotlight-frame { --spot-scale: 0.62 !important; }
+}
+
+@media (max-width: 380px) {
+  :root { --hero-card-scale: 0.48; }
+  .wg-h1 { font-size: 28px !important; }
+}
+/* === end responsive overrides === */
+
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script>"use strict";function _slicedToArray(r,e){return _arrayWithHoles(r)||_iterableToArrayLimit(r,e)||_unsupportedIterableToArray(r,e)||_nonIterableRest();}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(r,a){if(r){if("string"==typeof r)return _arrayLikeToArray(r,a);var t={}.toString.call(r).slice(8,-1);return"Object"===t&&r.constructor&&(t=r.constructor.name),"Map"===t||"Set"===t?Array.from(r):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?_arrayLikeToArray(r,a):void 0;}}function _arrayLikeToArray(r,a){(null==a||a>r.length)&&(a=r.length);for(var e=0,n=Array(a);e<a;e++)n[e]=r[e];return n;}function _iterableToArrayLimit(r,l){var t=null==r?null:"undefined"!=typeof Symbol&&r[Symbol.iterator]||r["@@iterator"];if(null!=t){var e,n,i,u,a=[],f=!0,o=!1;try{if(i=(t=t.call(r)).next,0===l){if(Object(t)!==t)return;f=!1;}else for(;!(f=(e=i.call(t)).done)&&(a.push(e.value),a.length!==l);f=!0);}catch(r){o=!0,n=r;}finally{try{if(!f&&null!=t.return&&(u=t.return(),Object(u)!==u))return;}finally{if(o)throw n;}}return a;}}function _arrayWithHoles(r){if(Array.isArray(r))return r;}var _React=React,createContext=_React.createContext,useContext=_React.useContext,useState=_React.useState,useCallback=_React.useCallback;var STRINGS={en:{nav:{features:"Features",why:"Why Pastique",download:"Download",github:"GitHub"},hero:{eyebrow:"macOS · Free · Open source",title:"The clipboard tool\nmacOS is missing.",titleAlt:"Everything you've copied,\none keystroke away.",titleMono:"Press ⌘⇧V.\nSee what you copied.",sub:"Press ⌘⇧V. Pastique sorts your clipboard by colour, link, command, image, and more — so the thing you copied an hour ago is one keystroke away.",cta:"Download for macOS",ctaSub:"Free · 10 MB · macOS 13+",secondary:"View on GitHub",try:"Try it now",tryHint:"press ⌘⇧V or click"},section:{featuresEyebrow:"What it does",featuresTitle:"A clipboard that\nsorts itself.",whyEyebrow:"Why another one",whyTitle:"Other clipboard tools\nask for too much.",shotsEyebrow:"See it",shotsTitle:"Built for the\nway you actually copy."},features:[{title:"Auto-sorted",body:"Colours, links, commands, personal info — Pastique detects each type and files it in its own tab. Find what you copied without scrolling.",chip:"All · Text · Link · Command · Image · Color · Personal"},{title:"Type to search",body:"No mode switch, no extra keystroke. Just start typing. Works smoothly with Chinese, Japanese, and Korean input methods.",chip:"中文 · 日本語 · 한국어"},{title:"Light & quiet",body:"Built in Swift. About 10 MB on disk. No menubar icon. No Dock entry. Nothing in your way until you press the hotkey.",chip:"~10 MB · Swift native"},{title:"Private by default",body:"Runs entirely on your Mac — no cloud, no telemetry, no account needed. Copies from password managers like 1Password are auto-detected and never stored.",chip:"No Accessibility prompt"}],why:[{k:"Permissions",pastique:"Zero",others:"Accessibility · Full Disk · Login Items"},{k:"Size on disk",pastique:"~10 MB",others:"100+ MB or Electron"},{k:"Menubar icon",pastique:"Hidden by default",others:"Always-on"},{k:"Sensitive content",pastique:"Skipped, never on disk",others:"Stored unless you remember to turn it off"},{k:"Price",pastique:"Free, MIT",others:"$10–25, closed source"}],shots:{a:{title:"All your copies, one panel.",body:"Most recent first, with a thumbnail for images, a swatch for colours, and a clean preview for everything else."},b:{title:"Filter by category.",body:"Click All, Text, Link, Command, Image, Color, or Personal \u2014 or arrow-key through the tabs without taking your hands off the keyboard."},c:{title:"Just start typing.",body:"No `/` prefix, no mode switch. Type and Pastique narrows the list. Press Esc or re-press ⌘⇧V to clear."},preview:{eyebrow:"Look before you copy",title:"Hover a colour or image,\nsee it before you paste.",body:"Pause on a colour swatch and Pastique shows you HEX, RGB, HSL. Pause on an image and you get the full thumbnail. No second app needed."}},footer:{tagline:"Pastique — the clipboard tool macOS is missing.",love:"Built with care in Swift.",coffee:"Buy the maker a coffee",license:"MIT licensed"},download:{primary:"Download .zip",primarySub:"v0.4.2 · Universal · 10 MB",releases:"All releases",source:"Source on GitHub"}},zh:{nav:{features:"功能",why:"為什麼選 Pastique",download:"下載",github:"GitHub"},hero:{eyebrow:"macOS · 免費 · 開源",title:"macOS 一直\n少了這個工具。",titleAlt:"你複製過的一切，\n一個快捷鍵就找到。",titleMono:"按下 ⌘⇧V，\n看看你剛剛複製了什麼。",sub:"按下 ⌘⇧V，Pastique 會把你的剪貼簿依顏色、連結、指令、圖片自動分類——一小時前複製的東西，一個鍵就能找回來。",cta:"下載 macOS 版",ctaSub:"免費 · 10 MB · macOS 13+",secondary:"GitHub 原始碼",try:"現在試試看",tryHint:"按 ⌘⇧V 或點一下"},section:{featuresEyebrow:"它能做什麼",featuresTitle:"一個會\n自己分類的剪貼簿。",whyEyebrow:"為什麼又一個",whyTitle:"別的剪貼簿工具\n要求太多了。",shotsEyebrow:"看看它",shotsTitle:"貼合你\n實際的複製習慣。"},features:[{title:"自動分類",body:"顏色、連結、指令、個人資訊——Pastique 自動辨識並歸類到對應分頁，不用滾整串歷史。",chip:"All · Text · Link · Command · Image · Color · Personal"},{title:"打字即搜尋",body:"不用切模式、不用多按鍵，直接打字就搜尋。對中、日、韓輸入法都很順手。",chip:"中文 · 日本語 · 한국어"},{title:"輕巧又安靜",body:"Swift 原生開發，磁碟佔用約 10 MB。預設不在選單列、不在 Dock，按下熱鍵之前完全不打擾你。",chip:"~10 MB · Swift 原生"},{title:"預設保護隱私",body:"完全在你的 Mac 上本地運作——沒有雲端、沒有遙測、不需要帳號。從 1Password 等密碼管理器複製的內容會自動辨識並略過，不會被儲存。",chip:"不需要輔助使用權限"}],why:[{k:"需要權限",pastique:"完全不用",others:"輔助使用 · 完整磁碟 · 登入項目"},{k:"磁碟佔用",pastique:"約 10 MB",others:"100 MB 以上或 Electron"},{k:"選單列圖示",pastique:"預設隱藏",others:"永遠常駐"},{k:"敏感內容",pastique:"自動略過，不存硬碟",others:"預設儲存，要記得關"},{k:"費用",pastique:"免費，MIT",others:"300–800 元，封閉原始碼"}],shots:{a:{title:"全部複製紀錄，一個面板。",body:"最新的在最上面，圖片有縮圖、顏色有色塊預覽，其它則是乾淨的文字預覽。"},b:{title:"依分類過濾。",body:"點 All、Text、Link、Command、Image、Color、Personal——或者方向鍵切換分頁，雙手不用離開鍵盤。"},c:{title:"直接開始打字。",body:"不用 `/` 前綴，不用切模式。打字 Pastique 就會即時過濾。按 Esc 或再按一次 ⌘⇧V 就清空。"},preview:{eyebrow:"先看完再貼上",title:"滑過一個顏色或圖片，\n貼上之前先看一下。",body:"在色塊上退一拍，Pastique 就會顯示 HEX / RGB / HSL。在圖片上退一拍就看到完整縮圖。不用另開一個 app。"}},footer:{tagline:"Pastique——macOS 一直少了的剪貼簿工具。",love:"用 Swift 細心打造。",coffee:"請開發者喝杯咖啡",license:"MIT 授權"},download:{primary:"下載 .zip",primarySub:"v0.4.2 · 通用版 · 10 MB",releases:"所有版本",source:"GitHub 原始碼"}}};var LangContext=createContext({lang:"en",t:STRINGS.en,setLang:()=>{}});function LangProvider(_ref){var children=_ref.children,_ref$initial=_ref.initial,initial=_ref$initial===void 0?"en":_ref$initial;var _useState=useState(initial),_useState2=_slicedToArray(_useState,2),lang=_useState2[0],setLang=_useState2[1];return React.createElement(LangContext.Provider,{value:{lang,t:STRINGS[lang],setLang}},children);}function useLang(){return useContext(LangContext);}function LangToggle(_ref2){var _ref2$className=_ref2.className,className=_ref2$className===void 0?"":_ref2$className,_ref2$style=_ref2.style,style=_ref2$style===void 0?{}:_ref2$style;var _useLang=useLang(),lang=_useLang.lang,setLang=_useLang.setLang;return React.createElement("div",{className:"lang-toggle ".concat(className),style:style,role:"group","aria-label":"language"},React.createElement("button",{type:"button",className:lang==="en"?"on":"",onClick:()=>setLang("en")},"EN"),React.createElement("span",{className:"sep"},"/"),React.createElement("button",{type:"button",className:lang==="zh"?"on":"",onClick:()=>setLang("zh")},"\u4E2D"));}Object.assign(window,{LangProvider,LangContext,useLang,LangToggle,STRINGS});</script>
+
+  <script>"use strict";function PqIcon(_ref){var _ref$size=_ref.size,size=_ref$size===void 0?32:_ref$size,_ref$className=_ref.className,className=_ref$className===void 0?"":_ref$className;return React.createElement("span",{className:className,style:{display:'inline-block',width:size,height:size,lineHeight:0,flexShrink:0},dangerouslySetInnerHTML:{__html:"<svg class=\"pq-icon\" viewBox=\"0 0 1024 1024\" xmlns=\"http://www.w3.org/2000/svg\" aria-hidden=\"true\">\n  <defs>\n    <linearGradient id=\"pqGlass\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#FFEDDF\"/>\n      <stop offset=\"55%\" stop-color=\"#F4D2C5\"/>\n      <stop offset=\"100%\" stop-color=\"#D9A99B\"/>\n    </linearGradient>\n    <linearGradient id=\"pqGloss\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#FFFFFF\" stop-opacity=\"0.65\"/>\n      <stop offset=\"40%\" stop-color=\"#FFFFFF\" stop-opacity=\"0.15\"/>\n      <stop offset=\"100%\" stop-color=\"#FFFFFF\" stop-opacity=\"0\"/>\n    </linearGradient>\n    <linearGradient id=\"pqTop\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#FFB100\"/>\n      <stop offset=\"50%\" stop-color=\"#E4587C\"/>\n      <stop offset=\"100%\" stop-color=\"#6B3A8F\"/>\n    </linearGradient>\n    <linearGradient id=\"pqMid\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#FFC340\"/>\n      <stop offset=\"50%\" stop-color=\"#EC7B97\"/>\n      <stop offset=\"100%\" stop-color=\"#8A5DA6\"/>\n    </linearGradient>\n    <linearGradient id=\"pqBack\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\">\n      <stop offset=\"0%\" stop-color=\"#FFD786\"/>\n      <stop offset=\"50%\" stop-color=\"#F2A1B6\"/>\n      <stop offset=\"100%\" stop-color=\"#AE8AC0\"/>\n    </linearGradient>\n    <radialGradient id=\"pqCool\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n      <stop offset=\"0%\" stop-color=\"#B6CFE2\" stop-opacity=\"0.55\"/>\n      <stop offset=\"100%\" stop-color=\"#B6CFE2\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <radialGradient id=\"pqWarm\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n      <stop offset=\"0%\" stop-color=\"#D1A88E\" stop-opacity=\"0.55\"/>\n      <stop offset=\"100%\" stop-color=\"#D1A88E\" stop-opacity=\"0\"/>\n    </radialGradient>\n    <clipPath id=\"pqSq\"><rect width=\"1024\" height=\"1024\" rx=\"229\"/></clipPath>\n  </defs>\n  <g clip-path=\"url(#pqSq)\">\n    <rect width=\"1024\" height=\"1024\" fill=\"url(#pqGlass)\"/>\n    <circle cx=\"300\" cy=\"260\" r=\"320\" fill=\"url(#pqCool)\"/>\n    <circle cx=\"780\" cy=\"820\" r=\"300\" fill=\"url(#pqWarm)\"/>\n    <rect width=\"1024\" height=\"560\" fill=\"url(#pqGloss)\"/>\n    <g transform=\"rotate(-8 530 510)\"><rect x=\"280\" y=\"160\" width=\"500\" height=\"660\" rx=\"56\" fill=\"url(#pqBack)\"/></g>\n    <g transform=\"rotate(4 512 512)\"><rect x=\"240\" y=\"190\" width=\"520\" height=\"660\" rx=\"56\" fill=\"url(#pqMid)\"/></g>\n    <g transform=\"rotate(-2 512 512)\">\n      <rect x=\"212\" y=\"220\" width=\"600\" height=\"660\" rx=\"60\" fill=\"url(#pqTop)\"/>\n      <rect x=\"212\" y=\"220\" width=\"600\" height=\"4\" rx=\"2\" fill=\"#FFFFFF\" opacity=\"0.55\"/>\n      <rect x=\"270\" y=\"320\" width=\"380\" height=\"38\" rx=\"19\" fill=\"#FFFFFF\" opacity=\"0.95\"/>\n      <rect x=\"270\" y=\"400\" width=\"460\" height=\"38\" rx=\"19\" fill=\"#FFFFFF\" opacity=\"0.82\"/>\n      <rect x=\"270\" y=\"480\" width=\"310\" height=\"38\" rx=\"19\" fill=\"#FFFFFF\" opacity=\"0.70\"/>\n      <rect x=\"270\" y=\"560\" width=\"410\" height=\"38\" rx=\"19\" fill=\"#FFFFFF\" opacity=\"0.55\"/>\n      <rect x=\"270\" y=\"640\" width=\"250\" height=\"38\" rx=\"19\" fill=\"#FFFFFF\" opacity=\"0.38\"/>\n    </g>\n  </g>\n</svg>"}});}window.PqIcon=PqIcon;</script>
+
+  <script>"use strict";function _slicedToArray(r,e){return _arrayWithHoles(r)||_iterableToArrayLimit(r,e)||_unsupportedIterableToArray(r,e)||_nonIterableRest();}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(r,a){if(r){if("string"==typeof r)return _arrayLikeToArray(r,a);var t={}.toString.call(r).slice(8,-1);return"Object"===t&&r.constructor&&(t=r.constructor.name),"Map"===t||"Set"===t?Array.from(r):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?_arrayLikeToArray(r,a):void 0;}}function _arrayLikeToArray(r,a){(null==a||a>r.length)&&(a=r.length);for(var e=0,n=Array(a);e<a;e++)n[e]=r[e];return n;}function _iterableToArrayLimit(r,l){var t=null==r?null:"undefined"!=typeof Symbol&&r[Symbol.iterator]||r["@@iterator"];if(null!=t){var e,n,i,u,a=[],f=!0,o=!1;try{if(i=(t=t.call(r)).next,0===l){if(Object(t)!==t)return;f=!1;}else for(;!(f=(e=i.call(t)).done)&&(a.push(e.value),a.length!==l);f=!0);}catch(r){o=!0,n=r;}finally{try{if(!f&&null!=t.return&&(u=t.return(),Object(u)!==u))return;}finally{if(o)throw n;}}return a;}}function _arrayWithHoles(r){if(Array.isArray(r))return r;}var _React=React,useEffect=_React.useEffect,useMemo=_React.useMemo,useRef=_React.useRef,useState=_React.useState;var SAMPLE_ITEMS=[{id:"i1",kind:"image",label:"Image · 1820×1140",meta:"Screenshot · 1m ago",thumb:"linear-gradient(135deg,#FFE3CF 0%,#F3A5A6 35%,#C094D2 70%,#6B3A8F 100%)"},{id:"i2",kind:"image",label:"Image · 720×480",meta:"Preview · 4m ago",thumb:"linear-gradient(180deg,#9ec5e8 0%,#cfe3d0 50%,#e8c39e 100%)"},{id:"t1",kind:"text",label:"see you at 3pm 👍",meta:"Messages · 6m ago"},{id:"t2",kind:"text",label:"Conference room 4B · 14th floor",meta:"Calendar · 9m ago"},{id:"l1",kind:"link",label:"https://news.ycombinator.com/item?id=39487256",meta:"Safari · 12m ago"},{id:"l2",kind:"link",label:"https://stackoverflow.com/questions/52006098/swift-detect-clipboard-change",meta:"Safari · 18m ago"},{id:"l3",kind:"link",label:"https://www.figma.com/design/aB3kQ9/Brand-system",meta:"Figma · 22m ago"},{id:"l4",kind:"link",label:"https://en.wikipedia.org/wiki/Pasteboard_(macOS)",meta:"Safari · 28m ago"},{id:"c1",kind:"command",label:"pnpm dev",meta:"Terminal · 30m ago"},{id:"c2",kind:"command",label:"git rebase -i HEAD~3",meta:"Terminal · 35m ago"},{id:"c3",kind:"command",label:"ssh deploy@api-prod.kyle.dev",meta:"Terminal · 42m ago"},{id:"t3",kind:"text",label:"Order #A1042-883-2210 — arriving Thursday between 12 and 4pm",meta:"Mail · 50m ago"},{id:"l5",kind:"link",label:"https://www.are.na/kyle-chang/clipboard-research",meta:"Safari · 1h ago"},{id:"l6",kind:"link",label:"https://www.npmjs.com/package/clipboard",meta:"Safari · 1h ago"},{id:"l7",kind:"link",label:"https://maps.apple.com/?q=Blue+Bottle+Mint+Plaza",meta:"Maps · 1h ago"},{id:"col1",kind:"color",label:"#F4D2C5",swatch:"#F4D2C5",meta:"Figma · 1h ago"},{id:"col2",kind:"color",label:"#FFB100",swatch:"#FFB100",meta:"Figma · 1h ago"},{id:"col3",kind:"color",label:"#E4587C",swatch:"#E4587C",meta:"Figma · 1h ago"},{id:"col4",kind:"color",label:"#6B3A8F",swatch:"#6B3A8F",meta:"Figma · 1h ago"},{id:"col5",kind:"color",label:"#1E2A38",swatch:"#1E2A38",meta:"Sketch · 2h ago"},{id:"i3",kind:"image",label:"Image · 1200×800",meta:"Preview · 1h ago",thumb:"linear-gradient(135deg,#2c3e50 0%,#4a5a6a 100%)"},{id:"t4",kind:"text",label:"\"design is what it does\" — to follow up on",meta:"Notes · 2h ago"},{id:"t5",kind:"text",label:"Hi Maya — quick sync tomorrow about the launch deck?",meta:"Drafts · 2h ago"},{id:"c4",kind:"command",label:"docker compose up -d --build",meta:"Terminal · 2h ago"},{id:"c5",kind:"command",label:"brew upgrade",meta:"Terminal · 3h ago"},{id:"l8",kind:"link",label:"https://www.youtube.com/watch?v=dQw4w9WgXcQ",meta:"Safari · 3h ago"},{id:"l9",kind:"link",label:"https://kyle.dev/blog/tiny-tools",meta:"Safari · 3h ago"},{id:"t6",kind:"text",label:"$48.20",meta:"Safari · 3h ago"},{id:"p1",kind:"personal",label:"kyle@hey.com",meta:"Mail · 4h ago"},{id:"p2",kind:"personal",label:"+1 (415) 555-0142",meta:"Contacts · 4h ago"},{id:"p3",kind:"personal",label:"401 Mission St, San Francisco, CA 94105",meta:"Maps · 5h ago"},{id:"p4",kind:"personal",label:"1Password · 6-digit code",meta:"skipped — concealed",concealed:true},{id:"t7",kind:"text",label:"the new espresso machine arrives Wednesday — please leave with neighbour if I'm out",meta:"Notes · 6h ago"}];var CATEGORIES=[{id:"all",label:"All",icon:"all"},{id:"text",label:"Text",icon:"text"},{id:"link",label:"Link",icon:"link"},{id:"command",label:"Command",icon:"command"},{id:"image",label:"Image",icon:"image"},{id:"color",label:"Color",icon:"color"},{id:"personal",label:"Personal",icon:"personal"}];function Glyph(_ref){var name=_ref.name,_ref$size=_ref.size,size=_ref$size===void 0?14:_ref$size,_ref$opacity=_ref.opacity,opacity=_ref$opacity===void 0?0.85:_ref$opacity;var s={width:size,height:size,opacity,flexShrink:0};var stroke="currentColor";var sw=1.4;switch(name){case"all":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("rect",{x:"2",y:"2",width:"5",height:"5",rx:"1",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("rect",{x:"9",y:"2",width:"5",height:"5",rx:"1",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("rect",{x:"2",y:"9",width:"5",height:"5",rx:"1",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("rect",{x:"9",y:"9",width:"5",height:"5",rx:"1",fill:"none",stroke:stroke,strokeWidth:sw}));case"text":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("path",{d:"M4 2 H12 L13.5 2 V4 M8 2 V14 M5 14 H11",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinecap:"round"}));case"link":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("circle",{cx:"8",cy:"8",r:"5.5",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("path",{d:"M2.5 8 H13.5 M8 2.5 C10 5 10 11 8 13.5 M8 2.5 C6 5 6 11 8 13.5",fill:"none",stroke:stroke,strokeWidth:sw}));case"command":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("rect",{x:"1.8",y:"3",width:"12.4",height:"10",rx:"1.4",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("path",{d:"M4.5 7.2 L6.5 9 L4.5 10.8 M7.5 10.8 H11",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinecap:"round",strokeLinejoin:"round"}));case"image":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("rect",{x:"1.8",y:"2.8",width:"12.4",height:"10.4",rx:"1.4",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("circle",{cx:"6",cy:"6.5",r:"1.2",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("path",{d:"M2.5 12 L6 9 L9 11.5 L11.5 9.5 L13.5 11",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinejoin:"round"}));case"color":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("path",{d:"M8 2 C4.5 2 2 4.5 2 8 C2 10.8 4 12.5 6 12.5 C6.8 12.5 7 12 7 11.5 C7 11 6.5 10.8 6.5 10.2 C6.5 9.6 7 9.2 7.6 9.2 H9.5 C12 9.2 14 7.5 14 5.2 C14 3.3 11.5 2 8 2 Z",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinejoin:"round"}),React.createElement("circle",{cx:"4.5",cy:"6",r:"0.8",fill:stroke}),React.createElement("circle",{cx:"7",cy:"4.3",r:"0.8",fill:stroke}),React.createElement("circle",{cx:"10",cy:"4.6",r:"0.8",fill:stroke}),React.createElement("circle",{cx:"11.5",cy:"7",r:"0.8",fill:stroke}));case"personal":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("rect",{x:"1.5",y:"3",width:"13",height:"10",rx:"1.6",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("circle",{cx:"5.5",cy:"7.5",r:"1.6",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("path",{d:"M3 11.5 C3.6 10 4.6 9.4 5.5 9.4 C6.4 9.4 7.4 10 8 11.5 M9.5 7 H13 M9.5 9.5 H12",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinecap:"round"}));case"gear":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("circle",{cx:"8",cy:"8",r:"2.2",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("path",{d:"M8 1.5 V3.2 M8 12.8 V14.5 M1.5 8 H3.2 M12.8 8 H14.5 M3.4 3.4 L4.6 4.6 M11.4 11.4 L12.6 12.6 M3.4 12.6 L4.6 11.4 M11.4 4.6 L12.6 3.4",stroke:stroke,strokeWidth:sw,strokeLinecap:"round"}));case"search":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("circle",{cx:"7",cy:"7",r:"4.5",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("path",{d:"M10.5 10.5 L14 14",stroke:stroke,strokeWidth:sw,strokeLinecap:"round"}));case"x":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("circle",{cx:"8",cy:"8",r:"6.5",fill:"rgba(255,255,255,0.18)",stroke:"none"}),React.createElement("path",{d:"M5.5 5.5 L10.5 10.5 M10.5 5.5 L5.5 10.5",stroke:stroke,strokeWidth:sw,strokeLinecap:"round"}));case"arrowL":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("path",{d:"M10 3 L5 8 L10 13",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinecap:"round",strokeLinejoin:"round"}));case"arrowR":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("path",{d:"M6 3 L11 8 L6 13",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinecap:"round",strokeLinejoin:"round"}));case"backspace":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("path",{d:"M5 3.5 L1.6 8 L5 12.5 H14 V3.5 Z",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinejoin:"round"}),React.createElement("path",{d:"M8.4 6.4 L11.6 9.6 M11.6 6.4 L8.4 9.6",stroke:stroke,strokeWidth:sw,strokeLinecap:"round"}));case"clock":return React.createElement("svg",{viewBox:"0 0 16 16",style:s},React.createElement("circle",{cx:"8",cy:"8",r:"5.5",fill:"none",stroke:stroke,strokeWidth:sw}),React.createElement("path",{d:"M8 4.5 V8 L10.5 9.5",fill:"none",stroke:stroke,strokeWidth:sw,strokeLinecap:"round"}));default:return null;}}function ItemIcon(_ref2){var item=_ref2.item,_ref2$size=_ref2.size,size=_ref2$size===void 0?14:_ref2$size;if(item.kind==="color"){return React.createElement("span",{style:{width:size+2,height:size+2,borderRadius:3,background:item.swatch,boxShadow:"inset 0 0 0 0.5px rgba(255,255,255,.25), 0 0 0 0.5px rgba(0,0,0,.25)",flexShrink:0}});}if(item.kind==="image"){return React.createElement("span",{style:{width:size+8,height:size+4,borderRadius:2,background:item.thumb||"#444",boxShadow:"inset 0 0 0 0.5px rgba(255,255,255,.12)",flexShrink:0}});}return React.createElement(Glyph,{name:item.kind==="personal"?"personal":"text",size:size,opacity:0.78});}function HoverPreview(_ref3){var item=_ref3.item;if(!item)return null;if(item.kind==="color"){var c=item.swatch;var rgb=hexToRgb(c);var hsl=rgb?rgbToHsl(rgb):null;return React.createElement("div",{className:"ppx-preview"},React.createElement("div",{className:"ppx-preview-swatch",style:{background:c}}),React.createElement("div",{className:"ppx-preview-meta"},React.createElement("div",{className:"ppx-preview-row"},React.createElement("span",null,"HEX"),React.createElement("span",null,c)),rgb&&React.createElement("div",{className:"ppx-preview-row"},React.createElement("span",null,"RGB"),React.createElement("span",null,"rgb(",rgb.r,", ",rgb.g,", ",rgb.b,")")),hsl&&React.createElement("div",{className:"ppx-preview-row"},React.createElement("span",null,"HSL"),React.createElement("span",null,"hsl(",hsl.h,", ",hsl.s,"%, ",hsl.l,"%)"))));}if(item.kind==="image"){return React.createElement("div",{className:"ppx-preview"},React.createElement("div",{className:"ppx-preview-image",style:{background:item.thumb}}),React.createElement("div",{className:"ppx-preview-meta"},React.createElement("div",{className:"ppx-preview-row"},React.createElement("span",null,"SIZE"),React.createElement("span",null,item.label.replace("Image · ",""))),React.createElement("div",{className:"ppx-preview-row"},React.createElement("span",null,"FROM"),React.createElement("span",null,(item.meta||"").split(" · ")[0]))));}return null;}function fallbackCopy(text){try{var ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.top="-1000px";ta.style.opacity="0";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);}catch(_unused){}}function hexToRgb(hex){var m=hex.replace("#","");if(m.length!==6)return null;return{r:parseInt(m.slice(0,2),16),g:parseInt(m.slice(2,4),16),b:parseInt(m.slice(4,6),16)};}function rgbToHsl(_ref4){var r=_ref4.r,g=_ref4.g,b=_ref4.b;r/=255;g/=255;b/=255;var max=Math.max(r,g,b),min=Math.min(r,g,b);var h=0,s=0;var l=(max+min)/2;if(max!==min){var d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return{h:Math.round(h*360),s:Math.round(s*100),l:Math.round(l*100)};}function PastiquePicker(_ref5){var openProp=_ref5.open,_ref5$defaultOpen=_ref5.defaultOpen,defaultOpen=_ref5$defaultOpen===void 0?false:_ref5$defaultOpen,onClose=_ref5.onClose,_ref5$inline=_ref5.inline,inline=_ref5$inline===void 0?false:_ref5$inline,_ref5$width=_ref5.width,width=_ref5$width===void 0?560:_ref5$width,_ref5$height=_ref5.height,height=_ref5$height===void 0?460:_ref5$height,_ref5$initialCategory=_ref5.initialCategory,initialCategory=_ref5$initialCategory===void 0?"all":_ref5$initialCategory,_ref5$initialQuery=_ref5.initialQuery,initialQuery=_ref5$initialQuery===void 0?"":_ref5$initialQuery,_ref5$showPreview=_ref5.showPreview,showPreview=_ref5$showPreview===void 0?true:_ref5$showPreview;var controlled=openProp!==undefined;var _useState=useState(defaultOpen),_useState2=_slicedToArray(_useState,2),openState=_useState2[0],setOpenState=_useState2[1];var open=controlled?openProp:openState;var close=()=>{if(!controlled)setOpenState(false);onClose&&onClose();};var _useState3=useState(initialCategory),_useState4=_slicedToArray(_useState3,2),cat=_useState4[0],setCat=_useState4[1];var _useState5=useState(initialQuery),_useState6=_slicedToArray(_useState5,2),query=_useState6[0],setQuery=_useState6[1];var _useState7=useState(0),_useState8=_slicedToArray(_useState7,2),sel=_useState8[0],setSel=_useState8[1];var _useState9=useState(null),_useState0=_slicedToArray(_useState9,2),copied=_useState0[0],setCopied=_useState0[1];var _useState1=useState(()=>new Set()),_useState10=_slicedToArray(_useState1,2),deleted=_useState10[0],setDeleted=_useState10[1];var listRef=useRef(null);var filtered=useMemo(()=>{var items=SAMPLE_ITEMS.filter(i=>!i.concealed&&!deleted.has(i.id));if(cat!=="all")items=items.filter(i=>i.kind===cat);if(query.trim()){var q=query.trim().toLowerCase();items=items.filter(i=>i.label.toLowerCase().includes(q));}return items;},[cat,query,deleted]);function copyItem(it){if(!it)return;setCopied(it.id);setTimeout(()=>setCopied(null),1100);var text=it.swatch||it.label;try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).catch(()=>fallbackCopy(text));}else{fallbackCopy(text);}}catch(_unused2){fallbackCopy(text);}}useEffect(()=>{setSel(s=>Math.min(s,Math.max(0,filtered.length-1)));},[filtered.length]);useEffect(()=>{setSel(0);},[cat]);useEffect(()=>{if(controlled)return;function onKey(e){var meta=e.metaKey||e.ctrlKey;if(meta&&e.shiftKey&&(e.key==="v"||e.key==="V")){e.preventDefault();setOpenState(v=>!v);}}window.addEventListener("keydown",onKey);return()=>window.removeEventListener("keydown",onKey);},[controlled]);useEffect(()=>{if(!open)return;function onKey(e){if(e.key==="Escape"){e.preventDefault();if(query){setQuery("");return;}close();return;}if(e.key==="ArrowDown"){e.preventDefault();if(!filtered.length)return;setSel(s=>(s+1)%filtered.length);}else if(e.key==="ArrowUp"){e.preventDefault();if(!filtered.length)return;setSel(s=>(s-1+filtered.length)%filtered.length);}else if(e.key==="ArrowLeft"){e.preventDefault();var idx=CATEGORIES.findIndex(c=>c.id===cat);setCat(CATEGORIES[(idx-1+CATEGORIES.length)%CATEGORIES.length].id);}else if(e.key==="ArrowRight"){e.preventDefault();var _idx=CATEGORIES.findIndex(c=>c.id===cat);setCat(CATEGORIES[(_idx+1)%CATEGORIES.length].id);}else if(e.key==="Enter"){e.preventDefault();copyItem(filtered[sel]);}else if(e.key==="Backspace"||e.key==="Delete"){e.preventDefault();if(query){setQuery(q=>q.slice(0,-1));}else{var it=filtered[sel];if(it){setDeleted(d=>{var n=new Set(d);n.add(it.id);return n;});}}}else if(e.key.length===1&&!e.metaKey&&!e.ctrlKey&&!e.altKey){e.preventDefault();setQuery(q=>q+e.key);}}window.addEventListener("keydown",onKey);return()=>window.removeEventListener("keydown",onKey);},[open,filtered,sel,cat,query]);useEffect(()=>{var _listRef$current;var node=(_listRef$current=listRef.current)===null||_listRef$current===void 0?void 0:_listRef$current.querySelector("[data-row=\"".concat(sel,"\"]"));if(node){var list=listRef.current;var rTop=node.offsetTop;var rBot=rTop+node.offsetHeight;if(rTop<list.scrollTop)list.scrollTop=rTop-4;else if(rBot>list.scrollTop+list.clientHeight)list.scrollTop=rBot-list.clientHeight+4;}},[sel]);var hovered=filtered[sel];var previewItem=hovered&&(hovered.kind==="image"||hovered.kind==="color")?hovered:null;if(!open&&!inline)return null;var panel=React.createElement("div",{className:"ppx-wrap"},showPreview&&previewItem&&React.createElement("div",{className:"ppx-preview-anchor"},React.createElement(HoverPreview,{item:previewItem})),React.createElement("div",{className:"ppx",style:{width,height}},query&&React.createElement("div",{className:"ppx-search ppx-search-active"},React.createElement(Glyph,{name:"search",size:14,opacity:0.65}),React.createElement("span",{className:"ppx-search-text"},query,React.createElement("span",{className:"ppx-caret"})),React.createElement("button",{className:"ppx-search-clear",onClick:()=>setQuery(""),"aria-label":"clear"},React.createElement(Glyph,{name:"x",size:14,opacity:0.7}))),React.createElement("div",{className:"ppx-list",ref:listRef},filtered.length===0&&React.createElement("div",{className:"ppx-empty"},"Nothing matches."),filtered.map((it,i)=>React.createElement("div",{key:it.id,"data-row":i,className:"ppx-row"+(i===sel?" sel":"")+(copied===it.id?" copied":""),onMouseEnter:()=>setSel(i),onClick:()=>{setSel(i);copyItem(it);}},React.createElement(ItemIcon,{item:it}),React.createElement("span",{className:"ppx-label"},it.label),copied===it.id&&React.createElement("span",{className:"ppx-copied"},"Copied")))),React.createElement("div",{className:"ppx-cats"},CATEGORIES.map(c=>React.createElement("button",{key:c.id,className:"ppx-cat"+(cat===c.id?" on":""),onClick:()=>setCat(c.id)},React.createElement(Glyph,{name:c.icon,size:13,opacity:cat===c.id?1:0.65}),React.createElement("span",null,c.label)))),React.createElement("div",{className:"ppx-hints"},React.createElement("span",{className:"ppx-hint"},React.createElement(Glyph,{name:"arrowL",size:11,opacity:0.55}),React.createElement(Glyph,{name:"arrowR",size:11,opacity:0.55})," filter"),React.createElement("span",{className:"ppx-hint"},React.createElement(Glyph,{name:"backspace",size:11,opacity:0.55})," delete"),React.createElement("span",{className:"ppx-hint ppx-hint-mid"},"type to search"),React.createElement("span",{className:"ppx-hint"},React.createElement(Glyph,{name:"clock",size:11,opacity:0.55})," recent"),React.createElement("button",{className:"ppx-gear","aria-label":"settings"},React.createElement(Glyph,{name:"gear",size:13,opacity:0.55})))));if(inline)return panel;return React.createElement("div",{className:"ppx-overlay",onClick:close},React.createElement("div",{onClick:e=>e.stopPropagation()},panel));}window.PastiquePicker=PastiquePicker;window.SAMPLE_ITEMS=SAMPLE_ITEMS;window.PpxGlyph=Glyph;window.PpxItemIcon=ItemIcon;</script>
+
+  <script>"use strict";function _slicedToArray(r,e){return _arrayWithHoles(r)||_iterableToArrayLimit(r,e)||_unsupportedIterableToArray(r,e)||_nonIterableRest();}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(r,a){if(r){if("string"==typeof r)return _arrayLikeToArray(r,a);var t={}.toString.call(r).slice(8,-1);return"Object"===t&&r.constructor&&(t=r.constructor.name),"Map"===t||"Set"===t?Array.from(r):"Arguments"===t||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)?_arrayLikeToArray(r,a):void 0;}}function _arrayLikeToArray(r,a){(null==a||a>r.length)&&(a=r.length);for(var e=0,n=Array(a);e<a;e++)n[e]=r[e];return n;}function _iterableToArrayLimit(r,l){var t=null==r?null:"undefined"!=typeof Symbol&&r[Symbol.iterator]||r["@@iterator"];if(null!=t){var e,n,i,u,a=[],f=!0,o=!1;try{if(i=(t=t.call(r)).next,0===l){if(Object(t)!==t)return;f=!1;}else for(;!(f=(e=i.call(t)).done)&&(a.push(e.value),a.length!==l);f=!0);}catch(r){o=!0,n=r;}finally{try{if(!f&&null!=t.return&&(u=t.return(),Object(u)!==u))return;}finally{if(o)throw n;}}return a;}}function _arrayWithHoles(r){if(Array.isArray(r))return r;}function LandingWarmGlass(){var _useLang=useLang(),t=_useLang.t,lang=_useLang.lang;var _useState=useState(false),_useState2=_slicedToArray(_useState,2),pickerOpen=_useState2[0],setPickerOpen=_useState2[1];React.useEffect(()=>{function onKey(e){var meta=e.metaKey||e.ctrlKey;if(meta&&e.shiftKey&&(e.key==="v"||e.key==="V")){e.preventDefault();setPickerOpen(v=>!v);}}window.addEventListener("keydown",onKey);return()=>window.removeEventListener("keydown",onKey);},[]);return React.createElement("div",{className:"wg-root","data-lang":lang},React.createElement("div",{className:"wg-bg","aria-hidden":"true"},React.createElement("div",{className:"wg-grad-base"}),React.createElement("div",{className:"wg-blob wg-blob-a"}),React.createElement("div",{className:"wg-blob wg-blob-b"}),React.createElement("div",{className:"wg-blob wg-blob-c"}),React.createElement("div",{className:"wg-grain"})),React.createElement("header",{className:"wg-nav"},React.createElement("div",{className:"wg-nav-left"},React.createElement("div",{className:"wg-mark"},React.createElement(PqIcon,{size:34}),React.createElement("span",null,"Pastique"))),React.createElement("nav",{className:"wg-nav-mid"},React.createElement("a",{href:"#features"},t.nav.features),React.createElement("a",{href:"#why"},t.nav.why),React.createElement("a",{href:"#download"},t.nav.download),React.createElement("a",{href:"https://github.com/yiyu0x/pastique",target:"_blank",rel:"noreferrer"},t.nav.github)),React.createElement("div",{className:"wg-nav-right"},React.createElement(LangToggle,null),React.createElement("a",{className:"wg-nav-cta",href:"#download"},t.nav.download))),React.createElement("section",{className:"wg-hero"},React.createElement("div",{className:"wg-hero-text"},React.createElement("div",{className:"wg-eyebrow"},React.createElement("span",{className:"wg-dot"}),t.hero.eyebrow),React.createElement("h1",{className:"wg-h1"},t.hero.title.split("\n").map((line,i)=>React.createElement("span",{key:i,className:"wg-h1-line"},line))),React.createElement("p",{className:"wg-sub"},t.hero.sub),React.createElement("div",{className:"wg-cta-row"},React.createElement("a",{className:"wg-cta-primary",href:"https://github.com/yiyu0x/pastique/releases/latest/download/Pastique.zip"},React.createElement("span",{className:"wg-cta-label"},t.hero.cta),React.createElement("span",{className:"wg-cta-sub"},t.hero.ctaSub)),React.createElement("button",{className:"wg-cta-secondary",onClick:()=>setPickerOpen(true)},React.createElement("span",{className:"wg-cta-try-label"},t.hero.try),React.createElement("span",{className:"wg-cta-try-kbd"},React.createElement("span",{className:"kbd dark"},"\u2318"),React.createElement("span",{className:"kbd dark"},"\u21E7"),React.createElement("span",{className:"kbd dark"},"V")))),React.createElement("div",{className:"wg-cta-hint"},t.hero.tryHint)),React.createElement("div",{className:"wg-hero-visual"},React.createElement("div",{className:"wg-stack"},React.createElement("div",{className:"wg-card wg-card-back"}),React.createElement("div",{className:"wg-card wg-card-mid"}),React.createElement("div",{className:"wg-card wg-card-front"},React.createElement("div",{className:"wg-picker-frame"},React.createElement(PastiquePicker,{inline:true,width:520,height:420,initialCategory:"all",showPreview:false})))),React.createElement("div",{className:"wg-stack-caption"},lang==="zh"?"Pastique 視窗，按 ⌘⇧V 開啟。":"The Pastique window. ⌘⇧V opens it."))),React.createElement("section",{id:"features",className:"wg-section"},React.createElement("div",{className:"wg-section-head"},React.createElement("div",{className:"wg-eyebrow"},React.createElement("span",{className:"wg-dot"}),t.section.featuresEyebrow),React.createElement("h2",{className:"wg-h2"},t.section.featuresTitle.split("\n").map((l,i)=>React.createElement("span",{key:i},l)))),React.createElement("div",{className:"wg-features"},t.features.map((f,i)=>React.createElement("article",{key:i,className:"wg-feature wg-feature-"+i},React.createElement("div",{className:"wg-feature-num"},"0",i+1),React.createElement("h3",null,f.title),React.createElement("p",null,f.body),React.createElement("div",{className:"wg-feature-chip"},f.chip))))),React.createElement("section",{id:"why",className:"wg-section wg-why"},React.createElement("div",{className:"wg-section-head"},React.createElement("div",{className:"wg-eyebrow"},React.createElement("span",{className:"wg-dot"}),t.section.whyEyebrow),React.createElement("h2",{className:"wg-h2"},t.section.whyTitle.split("\n").map((l,i)=>React.createElement("span",{key:i},l)))),React.createElement("div",{className:"wg-compare"},React.createElement("div",{className:"wg-compare-head"},React.createElement("div",null),React.createElement("div",{className:"wg-compare-pas"},React.createElement(PqIcon,{size:22}),"Pastique"),React.createElement("div",{className:"wg-compare-oth"},lang==="zh"?"其他剪貼簿工具":"Other clipboard tools")),t.why.map((row,i)=>React.createElement("div",{key:i,className:"wg-compare-row"},React.createElement("div",{className:"wg-compare-k"},row.k),React.createElement("div",{className:"wg-compare-pas-cell"},React.createElement("span",{className:"wg-check"},"\u2713"),row.pastique),React.createElement("div",{className:"wg-compare-oth-cell"},row.others))))),React.createElement("section",{className:"wg-section wg-shots"},React.createElement("div",{className:"wg-section-head"},React.createElement("div",{className:"wg-eyebrow"},React.createElement("span",{className:"wg-dot"}),t.section.shotsEyebrow),React.createElement("h2",{className:"wg-h2"},t.section.shotsTitle.split("\n").map((l,i)=>React.createElement("span",{key:i},l)))),React.createElement("div",{className:"wg-shots-grid"},React.createElement(ShotCard,{label:t.shots.a.title,body:t.shots.a.body,render:()=>React.createElement(PastiquePicker,{inline:true,width:420,height:340,initialCategory:"all",showPreview:false}),tone:"warm"}),React.createElement(ShotCard,{label:t.shots.b.title,body:t.shots.b.body,render:()=>React.createElement(PastiquePicker,{inline:true,width:420,height:340,initialCategory:"link",showPreview:false}),tone:"cool"}),React.createElement(ShotCard,{label:t.shots.c.title,body:t.shots.c.body,render:()=>React.createElement(PastiquePicker,{inline:true,width:420,height:340,initialCategory:"all",initialQuery:"github",showPreview:false}),tone:"warm"}))),React.createElement("section",{className:"wg-section wg-spotlight"},React.createElement("div",{className:"wg-spotlight-grid"},React.createElement("div",{className:"wg-spotlight-text"},React.createElement("div",{className:"wg-eyebrow"},React.createElement("span",{className:"wg-dot"}),t.shots.preview.eyebrow),React.createElement("h2",{className:"wg-h2 wg-spotlight-h2"},t.shots.preview.title.split("\n").map((l,i)=>React.createElement("span",{key:i},l))),React.createElement("p",{className:"wg-sub wg-spotlight-sub"},t.shots.preview.body),React.createElement("div",{className:"wg-spotlight-bullets"},React.createElement("div",{className:"wg-spotlight-bullet"},React.createElement("span",{className:"wg-spotlight-bullet-k"},"Color"),React.createElement("span",null,"HEX \xB7 RGB \xB7 HSL")),React.createElement("div",{className:"wg-spotlight-bullet"},React.createElement("span",{className:"wg-spotlight-bullet-k"},"Image"),React.createElement("span",null,lang==="zh"?"完整縮圖 · 尺寸 · 來源":"Full thumbnail · size · source")))),React.createElement("div",{className:"wg-spotlight-stage"},React.createElement("div",{className:"wg-spotlight-frame"},React.createElement(PastiquePicker,{inline:true,width:440,height:380,initialCategory:"color",showPreview:true}))))),React.createElement("section",{id:"download",className:"wg-section wg-final"},React.createElement("div",{className:"wg-final-card"},React.createElement(PqIcon,{size:88,className:"wg-final-icon"}),React.createElement("h2",{className:"wg-final-h2"},lang==="zh"?"把它放進你的 macOS。":"Add it to your Mac."),React.createElement("p",{className:"wg-final-sub"},lang==="zh"?"免費、開源、約 10 MB。下載 .zip,拖進 Applications,按 ⌘⇧V 就好。":"Free, open-source, about 10 MB. Download the .zip, drag to Applications, press ⌘⇧V."),React.createElement("div",{className:"wg-cta-row wg-cta-row-center"},React.createElement("a",{className:"wg-cta-primary",href:"https://github.com/yiyu0x/pastique/releases/latest/download/Pastique.zip"},React.createElement("span",{className:"wg-cta-label"},t.download.primary),React.createElement("span",{className:"wg-cta-sub"},t.download.primarySub)),React.createElement("a",{className:"wg-cta-secondary wg-cta-ghost",href:"https://github.com/yiyu0x/pastique"},React.createElement("span",{className:"wg-cta-try-label"},t.download.source))))),React.createElement("footer",{className:"wg-footer"},React.createElement("div",{className:"wg-footer-left"},React.createElement("div",{className:"wg-mark"},React.createElement(PqIcon,{size:24}),React.createElement("span",null,"Pastique")),React.createElement("div",{className:"wg-footer-tag"},t.footer.tagline)),React.createElement("div",{className:"wg-footer-right"},React.createElement("a",{href:"https://www.buymeacoffee.com/kylechang"},t.footer.coffee),React.createElement("a",{href:"https://github.com/yiyu0x/pastique/blob/main/LICENSE"},t.footer.license),React.createElement("a",{href:"https://github.com/yiyu0x/pastique"},"GitHub"))),pickerOpen&&React.createElement(PastiquePicker,{open:true,onClose:()=>setPickerOpen(false),width:580,height:460}));}function ShotCard(_ref){var label=_ref.label,body=_ref.body,render=_ref.render,tone=_ref.tone;return React.createElement("div",{className:"wg-shot wg-shot-"+tone},React.createElement("div",{className:"wg-shot-preview"},render()),React.createElement("div",{className:"wg-shot-text"},React.createElement("h4",null,label),React.createElement("p",null,body)));}window.LandingWarmGlass=LandingWarmGlass;</script>
+
+  <script>"use strict";function App(){return React.createElement(LangProvider,{initial:"en"},React.createElement(LandingWarmGlass,null));}ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App,null));</script>
+</body>
+</html>

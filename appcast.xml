@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Pastique</title>
+    <link>https://github.com/yiyu0x/pastique</link>
+    <description>Smart-card macOS clipboard manager</description>
+    <language>en</language>
+    <item>
+      <title>Pastique 0.3.1</title>
+      <link>https://github.com/yiyu0x/pastique/releases/tag/v0.3.1</link>
+      <sparkle:version>102</sparkle:version>
+      <sparkle:shortVersionString>0.3.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Sat, 16 May 2026 06:53:37 +0000</pubDate>
+      <enclosure
+      url="https://github.com/yiyu0x/pastique/releases/download/v0.3.1/Pastique-v0.3.1.zip"
+      length="5796722"
+      type="application/octet-stream"
+      sparkle:edSignature="+WcyGiZ1eCItkW0Bpez3BveqbjncBhE+vzhMbJoT1j6JN9yete7kF0fD5EyiOkyX4BTJJXReHNSYVgQ1ItBkCQ=="/>
+      </item>
+    <item>
+      <title>Pastique 0.3.0</title>
+      <link>https://github.com/yiyu0x/pastique/releases/tag/v0.3.0</link>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Sat, 16 May 2026 06:44:46 +0000</pubDate>
+      <enclosure
+      url="https://github.com/yiyu0x/pastique/releases/download/v0.3.0/Pastique-v0.3.0.zip"
+      length="5797556"
+      type="application/octet-stream"
+      sparkle:edSignature="jAYW1raWd4PQvhGKOfayVdywzX/tyF0LGqPAkpXWIYT1goQtWMqTTQVJzVIHLGZKCiEDE/Fu64bInRsksn5dDQ=="/>
+      </item>
+    <item>
+      <title>Pastique 0.3.2</title>
+      <link>https://github.com/yiyu0x/pastique/releases/tag/v0.3.2</link>
+      <sparkle:version>104</sparkle:version>
+      <sparkle:shortVersionString>0.3.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Sat, 16 May 2026 07:33:20 +0000</pubDate>
+      <enclosure
+        url="https://github.com/yiyu0x/pastique/releases/download/v0.3.2/Pastique-v0.3.2.zip"
+        length="5798543"
+        type="application/octet-stream"
+        sparkle:edSignature="j5gdKMw4/EIuFT4s2f40cpnsvwF4tcqYNJiEDSB5TiQFyPUKkdkVioMatEKBwcz0KJi1S4LdvoUqSyd85AbJBA=="/>
+    </item>
+    <item>
+      <title>Pastique 0.3.3</title>
+      <link>https://github.com/yiyu0x/pastique/releases/tag/v0.3.3</link>
+      <sparkle:version>106</sparkle:version>
+      <sparkle:shortVersionString>0.3.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Sun, 17 May 2026 04:30:57 +0000</pubDate>
+      <description><![CDATA[
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/yiyu0x/pastique/compare/v0.3.2...v0.3.3">yiyu0x/pastique@<tt>v0.3.2...v0.3.3</tt></a></p>
+      ]]></description>
+      <enclosure
+        url="https://github.com/yiyu0x/pastique/releases/download/v0.3.3/Pastique-v0.3.3.zip"
+        length="5816666"
+        type="application/octet-stream"
+        sparkle:edSignature="R4HzEH2OXWe0emSnxkO6vADPePyXqtcUNa7AColqbm2TFCoj1UOsUkKsfiNrti3pL1QaDxRjFUvoi+sQmu/eAQ=="/>
+    </item>
+    <item>
+      <title>Pastique 0.3.4</title>
+      <link>https://github.com/yiyu0x/pastique/releases/tag/v0.3.4</link>
+      <sparkle:version>107</sparkle:version>
+      <sparkle:shortVersionString>0.3.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+      <pubDate>Sun, 17 May 2026 04:39:29 +0000</pubDate>
+      <description><![CDATA[
+<h2>What's Changed</h2>
+<ul>
+<li>fix: build the Sparkle changelog from git log, not GitHub auto-notes (ef9b890)</li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/yiyu0x/pastique/compare/v0.3.3...v0.3.4">yiyu0x/pastique@<tt>v0.3.3...v0.3.4</tt></a></p>
+      ]]></description>
+      <enclosure
+        url="https://github.com/yiyu0x/pastique/releases/download/v0.3.4/Pastique-v0.3.4.zip"
+        length="5816665"
+        type="application/octet-stream"
+        sparkle:edSignature="DBdZqUl7fFO3nlm2SeWxTMzGulKHsOzeiZZxyqyjPj06UlrQD7M0hEDvGOB6rlsufhKzgfD+wrxLLDv2nnw3AA=="/>
+    </item>
+  </channel>
+</rss>
